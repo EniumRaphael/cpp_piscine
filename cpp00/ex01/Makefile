@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/10/14 19:07:56 by rparodi          ###   ########.fr        #
+#    Updated: 2024/10/14 23:43:03 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ CXXFLAGS = -Werror -Wextra -Wall -std=c++98
 #  Flags to debug and have the dependences (can be removed for correction)
 CXXFLAGS += -MMD -g3
 #  Flag to debug (TO REMOVE)
-# CXXFLAGS += -D DEBUG=1
+CXXFLAGS += -D DEBUG=1
 # Sources
 SRC =	./phonebook.cpp \
 		./main.cpp

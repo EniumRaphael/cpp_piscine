@@ -6,17 +6,20 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 19:42:14 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/14 19:06:54 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/15 00:14:12 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 #include <iostream>
-#include <ostream>
-#include <string>
-#include <cstring>
-#include <strings.h>
 
+/**
+ * @brief Adding a new contact
+ *
+ * @param index index for the new contact
+ * @param array_contact the array asked by the subject
+ * @return true on error
+ */
 bool adding(int index, contact array_contact[8])
 {
 	std::string input;
@@ -47,9 +50,20 @@ bool adding(int index, contact array_contact[8])
 	array_contact[index].dark_secret = input;
 	
 	array_contact[index].id = index;
+	time_t now = time(0);
+	array_contact[index].creation_time = localtime(&now);
 
 	if (DEBUG)
-		array_contact[index].print();
+		array_contact[index]._debug();
+	return (false);
+}
+
+bool	searching(contact contact[8], int index)
+{
+	if (index == 0)
+		return (true);
+	for (int i = 0; i < index; i++)
+		contact[i]._debug();
 	return (false);
 }
 
@@ -64,14 +78,18 @@ int	main(void)
 	{
 		std::cout << MENU_TEXT << std::endl;
 		std::getline(std::cin, input);
-		if (strcmp(input.c_str(), "ADD:") == 0)
+		if (strcmp(input.c_str(), "ADD") == 0)
+		{
 			if (adding(i, array_contact))
-				std::cerr << "Error: during the adding process" << std::endl;
-		if (strcmp(input.c_str(), "SEARCH:") == 0)
-			/*if (searching(array_contact))*/;
-		if (strcmp(input.c_str(), "EXIT:") == 0)
+				std::cerr << RED << "\nError: during the adding process\n" << RESET << std::endl;
+			else
+				i++;
+		}
+		if (strcmp(input.c_str(), "SEARCH") == 0)
+			if (searching(array_contact, i))
+				std::cerr << RED << "\nError: during the searching process\n" << RESET << std::endl;
+		if (strcmp(input.c_str(), "EXIT") == 0)
 			return (0);
 		input.clear();
-		i++;
 	}
 }
