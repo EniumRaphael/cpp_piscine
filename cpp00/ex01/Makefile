@@ -6,10 +6,9 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/09/20 19:46:50 by rparodi          ###   ########.fr        #
+#    Updated: 2024/10/14 19:07:56 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 # Variables
 
@@ -21,10 +20,15 @@ CXX = c++
 RM = rm -rf
 
 # Flags
-CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -g3
-
+#  Mandatory flags for 42 cpp
+CXXFLAGS = -Werror -Wextra -Wall -std=c++98
+#  Flags to debug and have the dependences (can be removed for correction)
+CXXFLAGS += -MMD -g3
+#  Flag to debug (TO REMOVE)
+# CXXFLAGS += -D DEBUG=1
 # Sources
-SRC =	./main.cpp
+SRC =	./phonebook.cpp \
+		./main.cpp
 
 # Objects
 OBJDIRNAME = ./build
