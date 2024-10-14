@@ -6,12 +6,11 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 19:42:14 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/15 00:14:12 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/15 00:33:56 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-#include <iostream>
 
 /**
  * @brief Adding a new contact
@@ -85,11 +84,15 @@ int	main(void)
 			else
 				i++;
 		}
-		if (strcmp(input.c_str(), "SEARCH") == 0)
+		else if (strcmp(input.c_str(), "SEARCH") == 0)
+		{
 			if (searching(array_contact, i))
 				std::cerr << RED << "\nError: during the searching process\n" << RESET << std::endl;
-		if (strcmp(input.c_str(), "EXIT") == 0)
+		}
+		else if (strcmp(input.c_str(), "EXIT") == 0)
 			return (0);
+		else
+				std::cerr << RED << "\nError: no option reconnise\n" << RESET << std::endl;
 		input.clear();
 	}
 }

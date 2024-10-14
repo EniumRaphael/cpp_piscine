@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:59:14 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/15 00:14:00 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/15 00:26:50 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <ctime>
 
 #define MENU_TEXT "You're in the main menu:\nHere's the command:\n\t- " << BLUE << "ADD: " << RESET << "To add a new contact\n\t- " BLUE << "SEARCH: " << RESET "To search a contact\n\t- " BLUE << "EXIT: " << RESET "to exit the program"
+#define GOLD "\033[38;5;220m"
 #define GREY "\033[0;90m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
