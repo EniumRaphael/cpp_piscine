@@ -6,11 +6,40 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 19:42:14 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/15 00:33:56 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/15 00:50:51 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+#include <ctime>
+#include <iostream>
+
+int get_older_contact(contact array_contact[8])
+{
+	int ret = 0;
+	time_t remain = 0;
+
+	for (int i = 0; i < 8; i++)
+	{
+		time_t tmp = mktime(array_contact[i].creation_time);
+		if (tmp == -1)
+		{
+			std::cerr << RED << "\nError: during the time process\n" << RESET << std::endl;
+			exit(1);
+		}
+		if (tmp > remain)
+		{
+			remain = mktime(array_contact[i].creation_time);
+			if (remain == -1)
+			{
+				std::cerr << RED << "\nError: during the time process\n" << RESET << std::endl;
+				exit(1);
+			}
+			ret = i;
+		}
+	}
+	return (ret);
+}
 
 /**
  * @brief Adding a new contact
@@ -57,7 +86,7 @@ bool adding(int index, contact array_contact[8])
 	return (false);
 }
 
-bool	searching(contact contact[8], int index)
+bool searching(contact contact[8], int index)
 {
 	if (index == 0)
 		return (true);
@@ -66,7 +95,7 @@ bool	searching(contact contact[8], int index)
 	return (false);
 }
 
-int	main(void)
+int main(void)
 {
 	contact array_contact[8];
 	int i;
