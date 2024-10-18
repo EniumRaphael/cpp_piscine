@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/10/14 23:43:03 by rparodi          ###   ########.fr        #
+#    Updated: 2024/10/17 15:36:20 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,14 @@ RM = rm -rf
 
 # Flags
 #  Mandatory flags for 42 cpp
-CXXFLAGS = -Werror -Wextra -Wall -std=c++98
+CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
 #  Flags to debug and have the dependences (can be removed for correction)
 CXXFLAGS += -MMD -g3
 #  Flag to debug (TO REMOVE)
 CXXFLAGS += -D DEBUG=1
 # Sources
-SRC =	./phonebook.cpp \
-		./main.cpp
+SRC =	./sources/phonebook.cpp \
+		./sources/main.cpp
 
 # Objects
 OBJDIRNAME = ./build
