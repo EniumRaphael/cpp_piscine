@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:56:49 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/18 12:18:04 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/18 16:02:09 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 #include <cstring>
 #include "color.hpp"
 
-#define ERROR 1
-#define NO_ERROR 0
+#define MENU CLR_BLUE << "ADD" << CLR_RESET << ":\tAdding a new contact" << std::endl << CLR_BLUE << "SEARCH" << CLR_RESET << ":\tSearching a contact in the list" << std::endl << CLR_BLUE << "EXIT" << CLR_RESET << ":\texit the program" << std::endl
 
 std::string get_input(const char *str);
 
@@ -47,8 +46,8 @@ class PhoneBook
 	public:
 		void add();
 		void search();
+		Contact array_contact[8];
 	private:
-		Contact _array_contact[8];
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:55:18 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/18 12:19:07 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/18 15:58:15 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ std::string get_input(const char *err_msg)
 int main()
 {
 	std::string input;
-	Contact array_contact[8];
+	PhoneBook phonebook;
 	size_t i = 0;
 
 	while (true)
 	{
+		std::cout << MENU << std::endl;
 		input = get_input("SELECT MENU [main.cpp:38]");
-		if (strcmp(input.c_str(), "ADD"))
+		if (strcmp(input.c_str(), "ADD") == 0)
 		{
-			std::cout << "adding" << std::endl;
-			array_contact[i].init_new(i);
+			phonebook.array_contact[i].init_new(i);
 			i++;
 		}
-		if (strcmp(input.c_str(), "EXIT"))
+		if (strcmp(input.c_str(), "EXIT") == 0)
 			exit(1);
 	}
 }
