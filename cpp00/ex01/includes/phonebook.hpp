@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:56:49 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/18 16:02:09 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/20 21:29:16 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,18 @@
 
 #define MENU CLR_BLUE << "ADD" << CLR_RESET << ":\tAdding a new contact" << std::endl << CLR_BLUE << "SEARCH" << CLR_RESET << ":\tSearching a contact in the list" << std::endl << CLR_BLUE << "EXIT" << CLR_RESET << ":\texit the program" << std::endl
 
-std::string get_input(const char *str);
+std::string get_input(const char *err_msg, std::string file, int line);
 
 class Contact
 {
 	public:
 		/*Contact();*/
 		/*~Contact();*/
-		void init_new(int id);
+		bool init_new(int id);
+		void print_all();
 		void print();
 	private:
+		std::string _get_number(const char *err_msg, std::string file, int line);
 		int _id;
 		std::string _first_name;
 		std::string _last_name;
@@ -44,10 +46,11 @@ class Contact
 class PhoneBook
 {
 	public:
-		void add();
-		void search();
+		void add(int id);
 		Contact array_contact[8];
+		void search(int max);
 	private:
+		void searching_header();
 };
 
 

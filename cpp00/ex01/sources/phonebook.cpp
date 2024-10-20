@@ -6,50 +6,41 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:09:21 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/18 15:55:41 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/20 21:34:27 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+#include "color.hpp"
+#include <stddef.h>
 
-void Contact::init_new(int id)
+void	PhoneBook::searching_header()
 {
-	_id = id;
-	std::cout << "First Name:\t";
-	_first_name = get_input("first_name [phonebook.cpp:18]");
-	std::cout << "Last Name:\t";
-	_last_name = get_input("last_name [phonebook.cpp:19]");
-	std::cout << "Nickname:\t";
-	_nickname = get_input("nickname [phonebook.cpp:20]");
-	std::cout << "Number:\t";
-	_number = get_input("number [phonebook.cpp:21]");
-	std::cout << "Secret:\t";
-	_secret = get_input("secret [phonebook.cpp:22]");
-	Contact::print();
+	std::cout << CLR_GREY << "|" << CLR_GOLD << std::setw(10)<< "ID" << CLR_RESET;
+	std::cout << CLR_GREY << "|" << CLR_GOLD << std::setw(10)<< "First Name" << CLR_RESET;
+	std::cout << CLR_GREY << "|" << CLR_GOLD << std::setw(10)<< "Last Name" << CLR_RESET;
+	std::cout << CLR_GREY << "|" << CLR_GOLD << std::setw(10)<< "Nickname" << CLR_RESET;
+	std::cout << CLR_GREY << "|" << CLR_RESET << std::endl;           
 }
-
-void Contact::print()
+void	PhoneBook::search(int max)
 {
-	std::cout << "|" <<  std::setw(10) << _id;
-	if (_first_name.length() > 10)
-		std::cout << "|" <<  std::setw(10) << _first_name.substr(0, 9) << ".";
+	unsigned long long chosen;
+	if (max == 0)
+	{
+		std::cout << CLR_RED << "\nError:\t Don't have any contact to search in (" << __FILE_NAME__ << ":" << __LINE__ << ")\n" << std::endl;
+		return;
+	}
+	searching_header();
+	for (int i = 0; i < max; i++)
+		array_contact[i].print();
+	std::cout << "\nGive me the contact on which you want more information:" << std::endl;
+	chosen = atoll(get_input("Search selection", __FILE_NAME__, __LINE__).c_str());
+	if (chosen >= 0 && chosen < (unsigned long long) max)
+		array_contact[chosen].print_all();
 	else
-		std::cout << "|" <<  std::setw(10) << _first_name;
-	if (_last_name.length() > 10)
-		std::cout << "|" <<  std::setw(10) << _last_name.substr(0, 9) << ".";
-	else
-		std::cout << "|" <<  std::setw(10) << _last_name;
-	if (_nickname.length() > 10)
-		std::cout << "|" <<  std::setw(10) << _nickname.substr(0, 9) << ".";
-	else
-		std::cout << "|" <<  std::setw(10) << _nickname;
-	if (_number.length() > 10)
-		std::cout << "|" <<  std::setw(10) << _number.substr(0, 9) << ".";
-	else
-		std::cout << "|" <<  std::setw(10) << _number;
-	if (_secret.length() > 10)
-		std::cout << "|" <<  std::setw(10) << _secret.substr(0, 9) << ".";
-	else
-		std::cout << "|" <<  std::setw(10) << _secret;
-	std::cout << "|" << std::endl;
+	{
+		std::cout << CLR_RED << "\nError:\t The contact chosen doesn't exist (" << __FILE_NAME__ << ":" << __LINE__ << ")\n" << std::endl;
+		return ;
+	}
+	std::cout << std::endl;
 }

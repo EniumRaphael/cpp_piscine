@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/10/17 15:36:20 by rparodi          ###   ########.fr        #
+#    Updated: 2024/10/18 17:46:21 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ CXXFLAGS += -MMD -g3
 #  Flag to debug (TO REMOVE)
 CXXFLAGS += -D DEBUG=1
 # Sources
-SRC =	./sources/phonebook.cpp \
+SRC =	./sources/contact.cpp\
+		./sources/phonebook.cpp \
 		./sources/main.cpp
 
 # Objects
