@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:55:18 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/20 21:38:07 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/22 14:05:46 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ std::string get_input(const char *err_msg, std::string file, int line)
 	{
 		if (!std::getline(std::cin, input))
 			throw std::runtime_error("getline can't read the input !\n");
-		else if (input.empty())
-			throw std::runtime_error("The input can't be empty !\n");
 	}
 	catch (const std::exception& err)
 	{
 		std::cerr << CLR_BOLD_RED << "\nError:\t" << err.what() << CLR_RESET << CLR_RED << "(" << err_msg << " [" << file << ":" << line << "]" << ")" << CLR_RESET << std::endl;
 		exit(1);
 	}
+	if (input.empty() == true)
+		return "";
 	return (input);
 }
 
@@ -47,14 +47,16 @@ int main()
 	{
 		std::cout << MENU << std::endl;
 		input = get_input("Main menu", __FILE_NAME__, __LINE__);
-		if (strcmp(input.c_str(), "ADD") == 0)
+		if (input == "ADD")
 		{
-			if (phonebook.array_contact[i].init_new(i) == true)
-				i++;
+			if (phonebook.array_contact[i].getUsed() == true)
+				phonebook.array_contact[i].clear();
+			phonebook.array_contact[i].init_new(i);
+			i = (i + 1) % 8;
 		}
-		if (strcmp(input.c_str(), "SEARCH") == 0)
-			phonebook.search(i);
-		if (strcmp(input.c_str(), "EXIT") == 0)
+		if (input ==  "SEARCH")
+			phonebook.search();
+		if (input == "EXIT")
 		{
 			std::cout << CLR_LIGHT_RED << "Leaving the program..." << CLR_RESET << std::endl;
 			exit(1);

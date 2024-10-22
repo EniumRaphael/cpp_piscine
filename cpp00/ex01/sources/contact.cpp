@@ -6,11 +6,43 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:42:58 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/20 21:31:16 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/22 14:05:15 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+
+Contact::Contact()
+{
+	_used = false;
+	_id = 0;
+	_first_name = "";
+	_last_name = "";
+	_nickname = "";
+	_number = "";
+	_secret = "";
+}
+
+Contact::~Contact()
+{
+	return;
+}
+
+bool Contact::getUsed()
+{
+	return _used;
+}
+
+void Contact::clear()
+{
+	_used = false;
+	_id = 0;
+	_first_name = "";
+	_last_name = "";
+	_nickname = "";
+	_number = "";
+	_secret = "";
+}
 
 std::string Contact::_get_number(const char *err_msg, std::string file, int line)
 {
@@ -24,26 +56,41 @@ std::string Contact::_get_number(const char *err_msg, std::string file, int line
 		return to_ret;
 }
 
-bool Contact::init_new(int id)
+void Contact::init_new(int id)
 {
 	_id = id;
-	std::cout << "First Name:\t";
-	_first_name = get_input("first_name", __FILE_NAME__, __LINE__);
-	std::cout << "Last Name:\t";
-	_last_name = get_input("last_name", __FILE_NAME__, __LINE__);
-	std::cout << "Nickname:\t";
-	_nickname = get_input("nickname", __FILE_NAME__, __LINE__);
-	std::cout << "Number:\t\t";
-	_number = _get_number("number", __FILE_NAME__, __LINE__);
-	if (_number.empty())
-		return false;
-	std::cout << "Secret:\t\t";
-	_secret = get_input("secret", __FILE_NAME__, __LINE__);
-	return true;
+	_used = true;
+	while (_first_name.empty() == true)
+	{
+		std::cout << "First Name:\t";
+		_first_name = get_input("first_name", __FILE_NAME__, __LINE__);
+	}
+	while (_last_name.empty() == true)
+	{
+		std::cout << "Last Name:\t";
+		_last_name = get_input("last_name", __FILE_NAME__, __LINE__);
+	}
+	while (_nickname.empty() == true)
+	{
+		std::cout << "Nickname:\t";
+		_nickname = get_input("nickname", __FILE_NAME__, __LINE__);
+	}
+	while (_number.empty() == true)
+	{
+		std::cout << "Number:\t\t";
+		_number = _get_number("number", __FILE_NAME__, __LINE__);
+	}
+	while (_secret.empty() == true)
+	{
+		std::cout << "Secret:\t\t";
+		_secret = get_input("secret", __FILE_NAME__, __LINE__);
+	}
 }
 
 void Contact::print()
 {
+	if (!_used) return;
+
 	std::cout << CLR_GREY << "|" << CLR_RESET << std::setw(10) << _id;
 	if (_first_name.length() > 10)
 		std::cout << CLR_GREY << "|" << CLR_RESET <<  std::setw(9) << _first_name.substr(0, 9) << ".";

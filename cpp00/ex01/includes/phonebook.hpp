@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:56:49 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/20 21:29:16 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/10/22 14:06:11 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <stddef.h>
 #include <cstdlib>
 #include <cstring>
 #include "color.hpp"
@@ -28,13 +27,17 @@ std::string get_input(const char *err_msg, std::string file, int line);
 class Contact
 {
 	public:
-		/*Contact();*/
-		/*~Contact();*/
-		bool init_new(int id);
+		Contact();
+		~Contact();
+		void init_new(int id);
 		void print_all();
 		void print();
+		bool getUsed();
+		void setUsed();
+		void clear();
 	private:
 		std::string _get_number(const char *err_msg, std::string file, int line);
+		bool _used;
 		int _id;
 		std::string _first_name;
 		std::string _last_name;
@@ -46,12 +49,13 @@ class Contact
 class PhoneBook
 {
 	public:
+		PhoneBook();
+		~PhoneBook();
 		void add(int id);
 		Contact array_contact[8];
-		void search(int max);
+		void search();
 	private:
 		void searching_header();
 };
-
 
 #endif
