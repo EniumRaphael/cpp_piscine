@@ -5,4 +5,4 @@ CompileFlags:
     - "-I/usr/local/include"
     - "-I/nix/store/pzmpyb9hxfv60vh0l67avr94h71nip1b-llvm-16.0.6-dev/include"
     - "-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
-    - "-I/Users/raphael/Documents/piscine/cpp/cpp00/ex01/includes/"
+    - "-I/Users/raphael/Documents/42_cursus/circle4/cpp/cpp00/ex01"
