@@ -1,19 +1,19 @@
 # **************************************************************************** #
-#                                                                              #
+
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/11/04 15:44:54 by rparodi          ###   ########.fr        #
+#    Updated: 2024/11/04 15:47:26 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 
 # Name
-NAME = phonebook
+NAME = BraiiiiiiinnnzzzZ
 
 # Commands
 CXX = c++
@@ -27,9 +27,10 @@ CXXFLAGS += -MMD -g3
 #  Flag to debug (TO REMOVE)
 # CXXFLAGS += -D DEBUG=1
 # Sources
-SRC =	./sources/contact.cpp\
-		./sources/phonebook.cpp \
-		./sources/main.cpp
+SRC =	Zombie.cpp \
+		newZombie.cpp \
+		randomChump.cpp \
+		main.cpp
 
 # Objects
 OBJDIRNAME = ./build
