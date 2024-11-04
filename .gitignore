@@ -1,4 +1,5 @@
 build/
+*.pdf
 *.d
 *.o
 phonebook
