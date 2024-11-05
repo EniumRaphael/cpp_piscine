@@ -2,7 +2,9 @@ build/
 *.pdf
 *.d
 *.o
+*.txt
 phonebook
+.DS_Store
 megaphone
 job_of_dream
 BraiiiiiiinnnzzzZ
