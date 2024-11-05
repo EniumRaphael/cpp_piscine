@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/11/04 19:50:07 by rparodi          ###   ########.fr        #
+#    Updated: 2024/11/05 12:55:19 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,12 +46,6 @@ END = \033[0m
 
 # All (make all)
 all: header $(NAME) footer
-
-# Bonus (make bonus)
-bonus: header $(OBJ) footer
-	@mkdir -p $(OBJDIRNAME)
-	@printf '$(GREY) Creating $(END)$(GREEN)$(OBJDIRNAME)$(END)\n'
-	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
 # Clean (make clean)
 clean:

@@ -6,12 +6,30 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:03:03 by rparodi           #+#    #+#             */
-/*   Updated: 2024/11/05 12:33:49 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/11/05 12:55:24 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
+
+#include <cstdlib>
+#include <string>
+#include <iostream>
+
+class Zombie
+{
+	public:
+		Zombie();
+		~Zombie();
+		void announce(void);
+		void setName( std::string name );
+	private:
+		std::string _name;
+};
+
+Zombie* zombieHorde( int N, std::string name );
+
 
 #define CLR_RESET       "\033[0m"
 
@@ -43,23 +61,5 @@
 #define CLR_BOLD_MAGENTA "\033[1;35m"
 #define CLR_BOLD_CYAN "\033[1;36m"
 #define CLR_BOLD_WHITE "\033[1;37m"
-
-
-#include <cstdlib>
-#include <string>
-#include <iostream>
-
-class Zombie
-{
-	public:
-		Zombie();
-		~Zombie();
-		void announce(void);
-		void setName( std::string name );
-	private:
-		std::string _name;
-};
-
-Zombie* zombieHorde( int N, std::string name );
 
 #endif
