@@ -6,14 +6,14 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/11/05 13:20:52 by rparodi          ###   ########.fr        #
+#    Updated: 2024/11/05 13:24:14 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 
 # Name
-NAME = hi_this_is_brain
+NAME = unnecessary_violence
 
 # Commands
 CXX = c++
@@ -27,7 +27,10 @@ CXXFLAGS += -MMD -g3
 #  Flag to debug (TO REMOVE)
 # CXXFLAGS += -D DEBUG=1
 # Sources
-SRC =	main.cpp
+SRC =	Weapon.cpp \
+		HumanB.cpp \
+		HumanA.cpp \
+		main.cpp
 
 # Objects
 OBJDIRNAME = ./build
