@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:24:29 by rparodi           #+#    #+#             */
-/*   Updated: 2024/11/05 22:02:35 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/11/06 16:09:06 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	Sed new_sed = Sed(argv, &input);
-	std::ofstream output = output(new_sed.getFilename());
-	while (new_sed.line(output)){}
+	std::ofstream output(new_sed.getFilename());
+    if (!output.is_open()) {
+        std::cerr << "Error: Could not open the file for writing." << std::endl;
+        return 1;
+    }
+	while (new_sed.line(output))
+	{
+	}
 }

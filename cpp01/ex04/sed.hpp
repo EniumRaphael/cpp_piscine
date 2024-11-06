@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:27:45 by rparodi           #+#    #+#             */
-/*   Updated: 2024/11/05 21:58:59 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/11/06 15:56:45 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Sed
 	public:
 		Sed(char **argv, std::ifstream *input);
 		~Sed();
-		bool line(std::ofstream output);
+		bool line(std::ofstream& output);
 		const char *getFilename();
 	private:
 		std::string _filename;
