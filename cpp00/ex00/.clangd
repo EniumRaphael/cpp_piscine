@@ -1,5 +1,5 @@
 CompileFlags:
-  Compiler: clang
+  Compiler: c++
   Add:
     - "-xc++"
     - "-stdlib=libc++"
