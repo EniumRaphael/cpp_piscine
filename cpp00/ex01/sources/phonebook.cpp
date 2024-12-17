@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:09:21 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/21 17:13:54 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/12/17 23:00:21 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	PhoneBook::searching_header()
 	std::cout << CLR_GREY << "|" << CLR_GOLD << std::setw(10)<< "Nickname" << CLR_RESET;
 	std::cout << CLR_GREY << "|" << CLR_RESET << std::endl;           
 }
+
 void	PhoneBook::search()
 {
 	unsigned long long chosen;

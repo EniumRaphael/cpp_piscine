@@ -1,4 +1,5 @@
 CompileFlags:
+  Compiler: c++
   Add:
     - "-xc++"
     - "-std=c++98"
