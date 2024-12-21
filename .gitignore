@@ -1,3 +1,4 @@
+.clangd
 build/
 *.pdf
 *.d

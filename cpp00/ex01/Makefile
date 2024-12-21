@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/11/04 15:44:54 by rparodi          ###   ########.fr        #
+#    Updated: 2024/12/21 16:48:34 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,16 @@ footer:
 		@printf "$(GOLD)                   '\"'   '\"'$(END)\n"
 		@printf '              $(GREY)The compilation is$(END) $(GOLD)finish$(END)\n               $(GREY)Have a good $(END)$(GOLD)correction !$(END)\n'
 
+clangd:
+	@echo 											\
+	"CompileFlags:\n"								\
+	"  Add:\n"										\
+	"    - \"-std=c++98 -Wall -Wextra -Werror\"\n"	\
+	"    - \"-I"$(shell pwd)"/includes\"\n"			\
+	"    - \"-xc++\"\n"								\
+	> .clangd
+
 #	Phony
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus clean fclean re clangd
 
 -include	${OBJ:.o=.d}
