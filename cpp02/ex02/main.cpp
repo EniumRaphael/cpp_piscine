@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:41:58 by rparodi           #+#    #+#             */
-/*   Updated: 2024/12/27 14:01:23 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/12/27 13:33:43 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main( void ) {
 	Fixed a;
-	Fixed const b( -10 );
+	Fixed const b( 10 );
 	Fixed const c( 42.42f );
 	Fixed const d( b );
 

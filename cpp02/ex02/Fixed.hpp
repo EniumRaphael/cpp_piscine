@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 19:30:23 by rparodi           #+#    #+#             */
-/*   Updated: 2024/12/27 13:50:06 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/12/27 14:13:47 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@
 			int toInt() const;
 			float toFloat() const;
 			Fixed & operator = (const Fixed &value);
+			Fixed & operator > (const Fixed &value);
+			Fixed & operator < (const Fixed &value);
+			Fixed & operator >= (const Fixed &value);
+			Fixed & operator <= (const Fixed &value);
+			Fixed & operator == (const Fixed &value);
+			Fixed & operator != (const Fixed &value);
+			Fixed & operator + (const Fixed &value);
+			Fixed & operator - (const Fixed &value);
+			Fixed & operator / (const Fixed &value);
+			Fixed & operator * (const Fixed &value);
+			Fixed operator ++ ();
+			Fixed operator -- ();
+			Fixed & operator ++ ();
+			Fixed & operator -- ();
 		private:
 			int	_integer_value;
 			float _floating_value;

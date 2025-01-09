@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 19:52:44 by rparodi           #+#    #+#             */
-/*   Updated: 2024/12/27 13:42:55 by rparodi          ###   ########.fr       */
+/*   Updated: 2024/12/27 14:13:47 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ Fixed::~Fixed() {
 Fixed& Fixed::operator=(const Fixed &value){
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->_fixed_value = value._fixed_value;
-	this->_integer_value = value._integer_value;
-	this->_floating_value = value._floating_value;
 	return *this;
 }
 
@@ -70,4 +68,62 @@ float Fixed::toFloat() const {
 int Fixed::getRawBits() const {
 	std::cout << "getRawBits member function called" << std::endl;
 	return this->_fixed_value;
+}
+Fixed & Fixed::operator > (const Fixed &value) {
+
+}
+Fixed & Fixed::operator < (const Fixed &value) {
+
+}
+
+Fixed & Fixed::operator >= (const Fixed &value) {
+
+}
+
+Fixed & Fixed::operator <= (const Fixed &value) {
+
+}
+
+Fixed & Fixed::operator == (const Fixed &value) {
+
+}
+
+Fixed & Fixed::operator != (const Fixed &value) {
+
+}
+
+Fixed & Fixed::operator + (const Fixed &value) {
+
+}
+
+Fixed & Fixed::operator - (const Fixed &value) {
+
+}
+
+Fixed & Fixed::operator / (const Fixed &value) {
+
+}
+
+Fixed & Fixed::operator * (const Fixed &value) {
+	
+}
+
+fixed fixed::operator ++ () {
+	return (*this);
+}
+
+Fixed Fixed::operator -- () {
+	this->_fixed_value++;
+	return (*this);
+}
+
+
+Fixed & Fixed::operator ++ () {
+	this->_fixed_value++;
+	return (*this);
+}
+
+Fixed & Fixed::operator -- () {
+	this->_fixed_value--;
+	return (*this);
 }
