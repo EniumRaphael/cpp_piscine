@@ -6,13 +6,17 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:59:49 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/14 21:59:42 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/24 18:32:35 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <string>
 #include <iostream>
+
+ClapTrap::ClapTrap() {
+	
+}
 
 ClapTrap::ClapTrap(std::string name) {
 	_name = name;

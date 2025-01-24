@@ -6,16 +6,17 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:50:07 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/14 22:04:48 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/24 17:37:56 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 
 int	main(void) {
 	std::cout << "[Broadcast]\n\tIn the Red corner the first cat of the 42 school !" << std::endl;
-	ClapTrap test("Norminet");
+	ScavTrap test("Norminet");
 	test.attack("Moulinette");
 	test.takeDamage(42);
 	test.beRepaired(42);
