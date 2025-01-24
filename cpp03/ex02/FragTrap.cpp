@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:41:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/24 20:31:45 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/24 21:01:58 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-ScavTrap::ScavTrap (std::string name) {
+FragTrap::FragTrap (std::string name) {
 	_name = name;
 	_hit_point = 100;
-	_energy_point = 50;
-	_attack_damage = 20;
-	_gateKeeperMode = false;
-	std::cout << "\n[Init] ScavTrap:\n\t" << "Name: " << _name << std::endl;
+	_energy_point = 100;
+	_attack_damage = 30;
+	std::cout << "\n[Init] FragTrap:\n\t" << "Name: " << _name << std::endl;
 }
 
-void ScavTrap::guardGate() {
-	_gateKeeperMode = !_gateKeeperMode;
-	std::cout << "\n[Mode] ScavTrap:\n\t" << "Name: " << _name << " the mode gate keeper is now: " << (_gateKeeperMode ? "enable" : "disable") << std::endl;
+void FragTrap::highFivesGuys() {
+	std::cout << "\n[Clap] FragTrap:\n\t" << "Name:" << _name << "Hey bro can i get an high five ? Thanks u brother !" << _name << "Hey bro can i get an high five ? Thanks u brother !" << std::endl;
 }

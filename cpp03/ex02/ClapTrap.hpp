@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 23:13:16 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/24 18:46:42 by rparodi          ###   ########.fr       */
+/*   Created: 2025/01/10 14:54:21 by rparodi           #+#    #+#             */
+/*   Updated: 2025/01/24 18:32:41 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 
-#include <iostream>
-#include "ClapTrap.hpp"
+#include <string>
 
-class ScavTrap : public ClapTrap {
+class ClapTrap {
 	public:
-		ScavTrap(std::string name);
-		void guardGate();
+		ClapTrap();
+		ClapTrap(std::string name);
+		~ClapTrap();
+		void attack(const std::string& target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
 	protected:
-
+		std::string _name;
+		int _hit_point;
+		int _energy_point;
+		int _attack_damage;
 	private:
-		bool _gateKeeperMode;
-	
+
 };
 
 #endif

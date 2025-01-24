@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:41:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/24 20:31:45 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/24 19:24:05 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ ScavTrap::ScavTrap (std::string name) {
 }
 
 void ScavTrap::guardGate() {
-	_gateKeeperMode = !_gateKeeperMode;
+_gateKeeperMode = !_gateKeeperMode;
 	std::cout << "\n[Mode] ScavTrap:\n\t" << "Name: " << _name << " the mode gate keeper is now: " << (_gateKeeperMode ? "enable" : "disable") << std::endl;
 }
