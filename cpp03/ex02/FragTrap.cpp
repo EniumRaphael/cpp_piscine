@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:41:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/24 21:01:58 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:02:17 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ FragTrap::FragTrap (std::string name) {
 }
 
 void FragTrap::highFivesGuys() {
-	std::cout << "\n[Clap] FragTrap:\n\t" << "Name:" << _name << "Hey bro can i get an high five ? Thanks u brother !" << _name << "Hey bro can i get an high five ? Thanks u brother !" << std::endl;
+	std::cout << "\n[Clap] FragTrap:\n\t" << "Name:" << _name << " Hey bro can i get an high five ? Thanks u brother !" << _name << "Hey bro can i get an high five ? Thanks u brother !" << std::endl;
 }
