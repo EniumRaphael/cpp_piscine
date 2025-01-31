@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 17:44:54 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/28 18:08:16 by rparodi          ###   ########.fr       */
+/*   Created: 2025/01/28 17:44:51 by rparodi           #+#    #+#             */
+/*   Updated: 2025/01/30 13:32:28 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-class Animal {
+#include "Animal.hpp"
+#include <string>
+
+class Dog : public Animal {
 	public:
-
+		Dog();
+		~Dog();
+		std::string getType();
 	protected:
 
 	private:
+
 };
 
 #endif
