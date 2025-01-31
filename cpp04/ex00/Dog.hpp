@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:44:51 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/30 13:32:28 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:24:07 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Dog : public Animal {
 	public:
 		Dog();
 		~Dog();
-		std::string getType();
+		virtual void makeSound() const;
 	protected:
 
 	private:

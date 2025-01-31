@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 13:32:43 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/31 19:54:03 by rparodi          ###   ########.fr       */
+/*   Created: 2025/01/30 13:21:01 by rparodi           #+#    #+#             */
+/*   Updated: 2025/01/31 19:54:23 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include <iostream>
 
-Cat::Cat() {
-	std::cout << "[Cat]\t\tCreating the class" << std::endl;
-	type = "Cat";
+WrongAnimal::WrongAnimal() {
+	std::cout << "[WrongAnimal]\tCreating the class" << std::endl;
+	type = "";
 }
 
-Cat::~Cat() {
-	std::cout << "[Cat]\t\tDeleting the class" << std::endl;
+WrongAnimal::~WrongAnimal() {
+	std::cout << "[WrongAnimal]\tDeleting the class" << std::endl;
 }
 
-void Cat::makeSound() const {
-	std::cout << "🐱 | Meow Meow" << std::endl;
+std::string WrongAnimal::getType() const {
+	return (type);
+}
+
+void WrongAnimal::makeSound() const {
+		std::cout << "🦊 | What does the fox say ?" << std::endl;
 }

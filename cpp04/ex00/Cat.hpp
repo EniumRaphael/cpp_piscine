@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:44:48 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/30 13:41:27 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/31 18:24:18 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class Cat : public Animal {
 	public:
 		Cat();
 		~Cat();
+		virtual void makeSound() const;
 	protected:
 
 	private:

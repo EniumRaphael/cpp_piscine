@@ -12,20 +12,25 @@
 # Variables
 
 # Name
-NAME = polyformism
+NAME = polymorphism
 
 # Commands
 CXX = c++
 RM = rm -rf
 
 # Flags
-#  Mandatory flags for 42 CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
+#  Mandatory flags for 42
+CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
 #  Flags to debug and have the dependences (can be removed for correction)
 CXXFLAGS += -MMD -g3
-#  Flag to debug (TO REMOVE)
-# CXXFLAGS += -D DEBUG=1
+
 # Sources
-SRC =	main.cpp
+SRC =	Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp \
+		main.cpp
 
 # Objects
 OBJDIRNAME = ./build
