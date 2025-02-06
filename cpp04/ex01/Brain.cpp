@@ -6,16 +6,19 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:17:41 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/06 17:56:18 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/06 23:28:28 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
+#include <sstream>
 #include <string>
 
 Brain::Brain() {
 	for (int i = 0; i < 100; i++) {
-		idea[i] = "I'm thinking about the number " + std::to_string(i + 1);
+		std::ostringstream oss;
+		oss << "I'm thinking about the number " << (i + 1);
+		idea[i] = oss.str();
 	}
 }
 

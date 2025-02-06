@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:32:43 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/31 19:54:03 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:54:35 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat() {
-	std::cout << "[Cat]\t\tCreating the class" << std::endl;
-	type = "Cat";
+WrongCat::WrongCat() {
+	std::cout << "[WrongCat]\tCreating the class" << std::endl;
+	type = "WrongCat";
 }
 
-Cat::~Cat() {
-	std::cout << "[Cat]\t\tDeleting the class" << std::endl;
+WrongCat::~WrongCat() {
+	std::cout << "[WrongCat]\tDeleting the class" << std::endl;
 }
 
-void Cat::makeSound() const {
-	std::cout << "🐱 | Meow Meow" << std::endl;
+void WrongCat::makeSound() const {
+	std::cout << "🙀 | Help me I transform my self in cat" << std::endl;
 }

@@ -6,21 +6,21 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:40:30 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/30 13:40:51 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:53:02 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
 Dog::Dog() {
-	std::cout << "[Dog] Creating the class" << std::endl;
+	std::cout << "[Dog]\t\tCreating the class" << std::endl;
 	type = "Dog";
 }
 
 Dog::~Dog() {
-	std::cout << "[Dog] Deleting the class" << std::endl;
+	std::cout << "[Dog]\t\tDeleting the class" << std::endl;
 }
 
-std::string Dog::getType() {
-	return (type);
+void Dog::makeSound() const {
+	std::cout << "🐶 | Wouf Wouf" << std::endl;
 }
