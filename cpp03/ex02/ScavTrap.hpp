@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 23:13:16 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/10 10:43:14 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 11:10:27 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class ScavTrap : public ClapTrap {
 		ScavTrap();
 		ScavTrap(ScavTrap const &copy);
 		ScavTrap(std::string name);
+		ScavTrap& operator=(ScavTrap &assign);
 		~ScavTrap();
 		void guardGate();
 	protected:

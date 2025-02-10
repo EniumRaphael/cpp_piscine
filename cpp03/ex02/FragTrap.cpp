@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:41:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/10 10:55:37 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 11:13:33 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ FragTrap::FragTrap(FragTrap const &copy) {
 	_energy_point = copy._energy_point;
 	_attack_damage = copy._attack_damage;
 	std::cout << "\n[Init] FragTrap (copy):\n\t" << "Name: " << _name << std::endl;
+}
+
+FragTrap& FragTrap::operator=(FragTrap &assign) {
+	_name = assign._name;
+	_hit_point = assign._hit_point;
+	_energy_point = assign._energy_point;
+	_attack_damage = assign._attack_damage;
+	std::cout << "\n[Init] FragTrap (assign):\n\t" << "Name: " << _name << std::endl;
+	return (assign);
 }
 
 FragTrap::~FragTrap() {

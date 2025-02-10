@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:41:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/10 10:56:14 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 11:12:27 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ ScavTrap::ScavTrap (std::string name) {
 	_attack_damage = 20;
 	_gateKeeperMode = false;
 	std::cout << "\n[Init] ScavTrap:\n\t" << "Name: " << _name << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(ScavTrap &assign) {
+	_name = assign._name;
+	_hit_point = assign._hit_point;
+	_energy_point = assign._energy_point;
+	_attack_damage = assign._attack_damage;
+	_gateKeeperMode = assign._gateKeeperMode;
+	std::cout << "\n[Init] ScavTrap (assign):\n\t" << "Name: " << _name << std::endl;
+	return (assign);
 }
 
 ScavTrap::~ScavTrap() {
