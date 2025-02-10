@@ -6,11 +6,29 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:41:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/24 19:24:05 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 10:56:14 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap() {
+	_name = "";
+	_hit_point = 0;
+	_energy_point = 0;
+	_attack_damage = 0;
+	_gateKeeperMode = false;
+	std::cout << "\n[Init] ScavTrap (no_name)" << std::endl;
+}
+
+ScavTrap::ScavTrap(ScavTrap const &copy) {
+	_name = copy._name;
+	_hit_point = copy._hit_point;
+	_energy_point = copy._energy_point;
+	_attack_damage = copy._attack_damage;
+	_gateKeeperMode = copy._gateKeeperMode;
+	std::cout << "\n[Init] ScavTrap (copy):\n\t" << "Name: " << _name << std::endl;
+}
 
 ScavTrap::ScavTrap (std::string name) {
 	_name = name;
@@ -19,6 +37,10 @@ ScavTrap::ScavTrap (std::string name) {
 	_attack_damage = 20;
 	_gateKeeperMode = false;
 	std::cout << "\n[Init] ScavTrap:\n\t" << "Name: " << _name << std::endl;
+}
+
+ScavTrap::~ScavTrap() {
+
 }
 
 void ScavTrap::guardGate() {

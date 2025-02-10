@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:54:21 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/24 18:32:41 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 10:24:18 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class ClapTrap {
 	public:
 		ClapTrap();
+		ClapTrap(ClapTrap const &copy);
 		ClapTrap(std::string name);
 		~ClapTrap();
 		void attack(const std::string& target);

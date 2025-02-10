@@ -6,11 +6,19 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:41:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/28 14:02:17 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 10:55:37 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap() {
+	_name = "";
+	_hit_point = 0;
+	_energy_point = 0;
+	_attack_damage = 0;
+	std::cout << "\n[Init] FragTrap (no_name)" << std::endl;
+}
 
 FragTrap::FragTrap (std::string name) {
 	_name = name;
@@ -18,6 +26,18 @@ FragTrap::FragTrap (std::string name) {
 	_energy_point = 100;
 	_attack_damage = 30;
 	std::cout << "\n[Init] FragTrap:\n\t" << "Name: " << _name << std::endl;
+}
+
+FragTrap::FragTrap(FragTrap const &copy) {
+	_name = copy._name;
+	_hit_point = copy._hit_point;
+	_energy_point = copy._energy_point;
+	_attack_damage = copy._attack_damage;
+	std::cout << "\n[Init] FragTrap (copy):\n\t" << "Name: " << _name << std::endl;
+}
+
+FragTrap::~FragTrap() {
+
 }
 
 void FragTrap::highFivesGuys() {

@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:59:49 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/14 21:59:42 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 10:55:30 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,29 @@
 #include <string>
 #include <iostream>
 
+ClapTrap::ClapTrap() {
+	_name = "";
+	_hit_point = 0;
+	_energy_point = 0;
+	_attack_damage = 0;
+	
+	std::cout << "\n[Init] ClapTrap (no_name)" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name) {
 	_name = name;
 	_hit_point = 10;
 	_energy_point = 10;
 	_attack_damage = 0;
 	std::cout << "\n[Init] ClapTrap:\n\t" << "Name: " << _name << std::endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap const &copy) {
+	_name = copy._name;
+	_hit_point = copy._hit_point;
+	_energy_point = copy._energy_point;
+	_attack_damage = copy._attack_damage;
+	std::cout << "\n[Init] ClapTrap (copy):\n\t" << "Name: " << _name << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
