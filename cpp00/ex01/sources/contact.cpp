@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 17:42:58 by rparodi           #+#    #+#             */
-/*   Updated: 2024/10/22 14:05:15 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 15:23:31 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,5 @@ void Contact::print_all()
 	std::cout << CLR_GREY << "Last Name:\t" << CLR_RESET << _last_name << std::endl;
 	std::cout << CLR_GREY << "Nickname:\t" << CLR_RESET << _nickname << std::endl;
 	std::cout << CLR_GREY << "Number:\t\t" << CLR_RESET << _number << std::endl;
-	std::cout << CLR_GREY << "Secret:\t\t" << CLR_RESET << _nickname << std::endl;
+	std::cout << CLR_GREY << "Secret:\t\t" << CLR_RESET << _secret << std::endl;
 }
