@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/12/21 16:48:34 by rparodi          ###   ########.fr        #
+#    Updated: 2025/02/10 10:02:41 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
 CXXFLAGS += -MMD -g3
 #  Flag to debug (TO REMOVE)
 # CXXFLAGS += -D DEBUG=1
+
 # Sources
 SRC =	./sources/contact.cpp\
 		./sources/phonebook.cpp \
