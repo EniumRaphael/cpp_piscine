@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:40:30 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/07 16:04:29 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 12:19:22 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Dog::Dog() {
 }
 
 Dog::~Dog() {
+	delete brain;
 	std::cout << "[Dog]\t\tDeleting the class" << std::endl;
 }
 

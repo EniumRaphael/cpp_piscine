@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:08:09 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/31 19:52:09 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 12:40:53 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,37 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include <iostream>
 
 int main() {
+	const unsigned int n = 42;
+	if (n % 2 != 0) {
+		std::cerr << "n must be an even number, if not i can't create the same number of Cat and Animal" << std::endl;
+		return (1);
+	}
+
 	std::cout << "\033[0;33m[ Building classes ]\033[0m" << std::endl;
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* k = new WrongAnimal();
-	const WrongAnimal* l = new WrongCat();
+	Animal *animals[n];
+	for (unsigned int i = 0; i < n; i++) {
+		std::cout << "(" << i + 1 << ") ";
+		if (i % 2 == 0) {
+			animals[i] = new Dog();
+		} else {
+			animals[i] = new Cat();
+		}
+	}
 
-	std::cout << std::endl << "\033[0;33m[ Testing the getType method ]\033[0m" << std::endl;
-	std::cout << "Type of j:\t" << j->getType() << std::endl;
-	std::cout << "Type of i:\t" << i->getType() << std::endl;
-	std::cout << "Type of l:\t" << l->getType() << std::endl;
+	std::cout << "\033[0;33m[ Making sounds ]\033[0m" << std::endl;
+	for (unsigned int i = 0; i < n; i++) {
+		std::cout << "(" << i + 1 << ") ";
+		animals[i]->makeSound();
+	}
 
-	std::cout << std::endl << "\033[0;33m[ Testing the makeSound method ]\033[0m" << std::endl;
-	std::cout << "Sound of meta:\t";
-	meta->makeSound();
-	std::cout << std::endl << "Sound of i:\t";
-	i->makeSound();
-	std::cout << std::endl << "Sound of j:\t";
-	j->makeSound();
-	std::cout << std::endl << "Sound of k:\t";
-	k->makeSound();
-	std::cout << std::endl << "Sound of l:\t";
-	l->makeSound();
-	std::cout << std::endl << "\033[0;33m[ Deleting classes ]\033[0m" << std::endl;
-	delete meta;
-	delete j;
-	delete i;
-	delete k;
-	delete l;
+	std::cout << "\033[0;33m[ Deleting classes ]\033[0m" << std::endl;
+	for (unsigned int i = 0; i < n; i++) {
+		std::cout << "(" << i + 1 << ") ";
+		delete animals[i];
+	}
+
 	return 0;
 }
