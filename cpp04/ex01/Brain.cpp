@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:17:41 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/06 23:28:28 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:51:50 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,8 @@ Brain::Brain() {
 
 Brain::~Brain() {
 
+}
+
+Brain& Brain::operator=(Brain &value) {
+	return (value);
 }
