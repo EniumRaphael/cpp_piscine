@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:41:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/10 11:12:27 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 12:10:42 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ ScavTrap& ScavTrap::operator=(ScavTrap &assign) {
 	_attack_damage = assign._attack_damage;
 	_gateKeeperMode = assign._gateKeeperMode;
 	std::cout << "\n[Init] ScavTrap (assign):\n\t" << "Name: " << _name << std::endl;
-	return (assign);
+	return *this;
 }
 
 ScavTrap::~ScavTrap() {

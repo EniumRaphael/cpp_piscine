@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:59:49 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/10 10:55:30 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/10 12:09:57 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ ClapTrap::ClapTrap(ClapTrap const &copy) {
 	_energy_point = copy._energy_point;
 	_attack_damage = copy._attack_damage;
 	std::cout << "\n[Init] ClapTrap (copy):\n\t" << "Name: " << _name << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(ClapTrap &assign) {
+	_name = assign._name;
+	_hit_point = assign._hit_point;
+	_energy_point = assign._energy_point;
+	_attack_damage = assign._attack_damage;
+	std::cout << "\n[Init] ClapTrap (assign):\n\t" << "Name: " << _name << std::endl;
+	return (*this);
 }
 
 ClapTrap::~ClapTrap() {
