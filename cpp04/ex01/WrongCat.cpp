@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 16:22:05 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/18 17:17:44 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/18 20:21:16 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ WrongCat::WrongCat(WrongCat const & copy) {
 }
 
 WrongCat & WrongCat::operator=(WrongCat const & assign) {
-	std::cout << "[WrongCat]\tCreating WrongCat class (assign)" << std::endl;
+	std::cout << "[WrongCat]\t\tCreating WrongCat class (assign)" << std::endl;
 	this->type = assign.type;
 	return *this;
 }

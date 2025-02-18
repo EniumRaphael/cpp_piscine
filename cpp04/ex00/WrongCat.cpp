@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 16:22:05 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/18 16:53:06 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/18 20:21:16 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <iostream>
 
 WrongCat::WrongCat() {
-	std::cout << "[WrongCat]\t\tCreating WrongCat class" << std::endl;
+	std::cout << "[WrongCat]\tCreating WrongCat class" << std::endl;
 	type = "WrongCat";
 }
 
 WrongCat::WrongCat(WrongCat const & copy) {
-	std::cout << "[WrongCat]\t\tCreating WrongCat class (copy)" << std::endl;
+	std::cout << "[WrongCat]\tCreating WrongCat class (copy)" << std::endl;
 	this->type = copy.type;
 }
 
@@ -30,9 +30,9 @@ WrongCat & WrongCat::operator=(WrongCat const & assign) {
 }
 
 WrongCat::~WrongCat() {
-	std::cout << "[WrongCat]\t\tDeleting WrongCat class" << std::endl;
+	std::cout << "[WrongCat]\tDeleting WrongCat class" << std::endl;
 }
 
 void WrongCat::makeSound() const {
-	std::cout << "[WrongCat]\t\t🐱 | Wouf wouf" << std::endl;
+	std::cout << "[WrongCat]\t🐱 | Wouf wouf" << std::endl;
 }
