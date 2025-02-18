@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 17:44:51 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/31 18:24:07 by rparodi          ###   ########.fr       */
+/*   Created: 2025/02/18 16:26:17 by rparodi           #+#    #+#             */
+/*   Updated: 2025/02/18 16:27:11 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 #define DOG_HPP
 
 #include "Animal.hpp"
-#include <string>
 
 class Dog : public Animal {
 	public:
 		Dog();
 		~Dog();
+		Dog(Dog const & copy);
+		Dog & operator=(Dog const & assign);
 		virtual void makeSound() const;
 	protected:
-
-	private:
-
+		std::string type;
 };
 
 #endif

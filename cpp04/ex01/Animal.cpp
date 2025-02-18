@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 13:21:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/31 19:53:47 by rparodi          ###   ########.fr       */
+/*   Created: 2025/02/18 16:21:46 by rparodi           #+#    #+#             */
+/*   Updated: 2025/02/18 17:19:20 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 #include <iostream>
 
 Animal::Animal() {
-	std::cout << "[Animal]\tCreating the class" << std::endl;
-	type = "";
+	std::cout << "[Animal]\tCreating Animal class" << std::endl;
+	type = "Animal";
+}
+
+Animal::Animal(Animal const & copy) {
+	std::cout << "[Animal]\tCreating Animal class (copy)" << std::endl;
+	this->type = copy.type;
+}
+
+Animal & Animal::operator=(Animal const & assign) {
+	std::cout << "[Animal]\tCreating Animal class (assign)" << std::endl;
+	this->type = assign.type;
+	return *this;
 }
 
 Animal::~Animal() {
-	std::cout << "[Animal]\tDeleting the class" << std::endl;
-}
-
-std::string Animal::getType() const {
-	return (type);
+	std::cout << "[Animal]\tDeleting Animal class" << std::endl;
 }
 
 void Animal::makeSound() const {
-		std::cout << "🤔 | thinking how to make a sound" << std::endl;
+	std::cout << "[Animal]\t🦊 | What does the fox say ?" << std::endl;
 }

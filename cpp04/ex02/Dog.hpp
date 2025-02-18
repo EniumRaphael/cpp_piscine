@@ -5,28 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 17:44:51 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/07 17:51:39 by rparodi          ###   ########.fr       */
+/*   Created: 2025/02/18 16:26:17 by rparodi           #+#    #+#             */
+/*   Updated: 2025/02/18 20:11:18 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 #define DOG_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
-#include <string>
 
-class Dog : public Animal {
+class Dog : public AAnimal {
 	public:
 		Dog();
 		~Dog();
+		Dog(Dog const & copy);
+		Dog & operator=(Dog const & assign);
 		virtual void makeSound() const;
+		std::string getIdea(int const index) const;
+		void setIdea(int const index, std::string const idea) const;
+		Dog* clone() const;
 	protected:
-
-	private:
 		Brain *brain;
-
+		std::string type;
 };
 
 #endif

@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 16:21:46 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/18 16:51:30 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/02/18 20:10:59 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include <iostream>
 
-Animal::Animal() {
-	std::cout << "[Animal]\tCreating Animal class" << std::endl;
-	type = "Animal";
+AAnimal::AAnimal() {
+	std::cout << "[AAnimal]\tCreating AAnimal class" << std::endl;
+	type = "AAnimal";
 }
 
-Animal::Animal(Animal const & copy) {
-	std::cout << "[Animal]\tCreating Animal class (copy)" << std::endl;
+AAnimal::AAnimal(AAnimal const & copy) {
+	std::cout << "[AAnimal]\tCreating AAnimal class (copy)" << std::endl;
 	this->type = copy.type;
 }
 
-Animal & Animal::operator=(Animal const & assign) {
-	std::cout << "[Animal]\tCreating Animal class (assign)" << std::endl;
+AAnimal & AAnimal::operator=(AAnimal const & assign) {
+	std::cout << "[AAnimal]\tCreating AAnimal class (assign)" << std::endl;
 	this->type = assign.type;
 	return *this;
 }
 
-Animal::~Animal() {
-	std::cout << "[Animal]\tDeleting animal class" << std::endl;
+AAnimal::~AAnimal() {
+	std::cout << "[AAnimal]\tDeleting AAnimal class" << std::endl;
 }
 
-void Animal::makeSound() const {
-	std::cout << "[Animal]\t🦊 | What does the fox say ?" << std::endl;
+void AAnimal::makeSound() const {
+	std::cout << "[AAnimal]\t🦊 | What does the fox say ?" << std::endl;
 }

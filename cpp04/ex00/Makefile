@@ -1,36 +1,38 @@
 # **************************************************************************** #
+
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2024/12/21 19:50:58 by rparodi          ###   ########.fr        #
+#    Updated: 2025/02/18 16:50:42 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 
 # Name
-NAME = polymorphism
+NAME = open
 
 # Commands
 CXX = c++
 RM = rm -rf
 
 # Flags
-#  Mandatory flags for 42
+#  Mandatory flags for 42 cpp
 CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
 #  Flags to debug and have the dependences (can be removed for correction)
 CXXFLAGS += -MMD -g3
-
+#  Flag to debug (TO REMOVE)
+# CXXFLAGS += -D DEBUG=1
 # Sources
-SRC =	Animal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
+SRC =	main.cpp \
 		WrongCat.cpp \
-		main.cpp
+		WrongAnimal.cpp \
+		Dog.cpp \
+		Animal.cpp \
+		Cat.cpp
 
 # Objects
 OBJDIRNAME = ./build

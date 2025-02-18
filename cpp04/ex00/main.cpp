@@ -5,46 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 17:08:09 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/31 19:52:09 by rparodi          ###   ########.fr       */
+/*   Created: 2025/02/18 16:22:11 by rparodi           #+#    #+#             */
+/*   Updated: 2025/02/18 16:48:50 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-#include "Dog.hpp"
 #include "Cat.hpp"
+#include "Dog.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include "color.hpp"
+#include <iostream>
+#include <ostream>
 
 int main() {
-	std::cout << "\033[0;33m[ Building classes ]\033[0m" << std::endl;
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* k = new WrongAnimal();
-	const WrongAnimal* l = new WrongCat();
+	std::cout << YELLOW << "\t\t[ Constructor ]" << RESET << std::endl;
+	const Animal* theClassic = new Animal();
+	const Animal* theDog = new Dog();
+	const Animal* theCat = new Cat();
+	const WrongAnimal* theBadAnimal = new WrongAnimal();
+	const WrongAnimal* theBadCat = new WrongCat();
 
-	std::cout << std::endl << "\033[0;33m[ Testing the getType method ]\033[0m" << std::endl;
-	std::cout << "Type of j:\t" << j->getType() << std::endl;
-	std::cout << "Type of i:\t" << i->getType() << std::endl;
-	std::cout << "Type of l:\t" << l->getType() << std::endl;
+	std::cout << std::endl << YELLOW << "\t\t[ Make Sound ]" << RESET << std::endl;
+	theClassic->makeSound();
+	theDog->makeSound();
+	theCat->makeSound();
+	theBadAnimal->makeSound();
+	theBadCat->makeSound();
 
-	std::cout << std::endl << "\033[0;33m[ Testing the makeSound method ]\033[0m" << std::endl;
-	std::cout << "Sound of meta:\t";
-	meta->makeSound();
-	std::cout << std::endl << "Sound of i:\t";
-	i->makeSound();
-	std::cout << std::endl << "Sound of j:\t";
-	j->makeSound();
-	std::cout << std::endl << "Sound of k:\t";
-	k->makeSound();
-	std::cout << std::endl << "Sound of l:\t";
-	l->makeSound();
-	std::cout << std::endl << "\033[0;33m[ Deleting classes ]\033[0m" << std::endl;
-	delete meta;
-	delete j;
-	delete i;
-	delete k;
-	delete l;
+	std::cout << std::endl << YELLOW << "\t\t[ Destructor ]" << RESET << std::endl;
+	delete theClassic;
+	delete theDog;
+	delete theCat;
+	delete theBadAnimal;
+	delete theBadCat;
 	return 0;
 }

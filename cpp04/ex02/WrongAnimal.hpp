@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 17:44:54 by rparodi           #+#    #+#             */
-/*   Updated: 2025/01/31 19:34:06 by rparodi          ###   ########.fr       */
+/*   Created: 2025/02/18 16:21:56 by rparodi           #+#    #+#             */
+/*   Updated: 2025/02/18 16:30:56 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 #define WRONGANIMAL_HPP
 
 #include <string>
-#include <iostream>
 
 class WrongAnimal {
 	public:
 		WrongAnimal();
 		virtual ~WrongAnimal();
-		virtual void makeSound() const;
-		std::string getType() const;
+		WrongAnimal(WrongAnimal const & copy);
+		WrongAnimal & operator=(WrongAnimal const & assign);
+		void makeSound() const;
+
 	protected:
 		std::string type;
-	private:
 };
 
 #endif

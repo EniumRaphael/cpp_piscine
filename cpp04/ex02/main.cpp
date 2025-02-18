@@ -5,47 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 17:08:09 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/10 12:40:53 by rparodi          ###   ########.fr       */
+/*   Created: 2025/02/18 16:22:11 by rparodi           #+#    #+#             */
+/*   Updated: 2025/02/18 20:12:27 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "Dog.hpp"
+#include "color.hpp"
 #include <iostream>
+#include <ostream>
 
 int main() {
-	const unsigned int n = 42;
-	if (n % 2 != 0) {
-		std::cerr << "n must be an even number, if not i can't create the same number of Cat and Animal" << std::endl;
-		return (1);
+	const int nb = 42;
+
+	if (nb % 2 != 0) {
+		std::cerr << RED << "Error: Please enter an odd number." << RESET << std::endl;
+		return 1;
+	}
+	if (nb < 0) {
+		std::cerr << RED << "Error: Please enter a positive number." << RESET << std::endl;
+		return 2;
 	}
 
-	std::cout << "\033[0;33m[ Building classes ]\033[0m" << std::endl;
-	Animal *animals[n];
-	for (unsigned int i = 0; i < n; i++) {
-		std::cout << "(" << i + 1 << ") ";
-		if (i % 2 == 0) {
-			animals[i] = new Dog();
-		} else {
-			animals[i] = new Cat();
-		}
+	AAnimal *tab[nb];
+
+	std::cout << YELLOW << "\t\t[ Constructor ]" << RESET << std::endl;
+	for (int i = 0; i < nb && i < nb; i++) {
+		std::cout << std::endl << BLUE << "(" << i + 1 << ")\t" << RESET << std::endl;
+		if (i % 2 == 0)
+			tab[i] = new Dog();
+		else
+			tab[i] = new Cat();
 	}
 
-	std::cout << "\033[0;33m[ Making sounds ]\033[0m" << std::endl;
-	for (unsigned int i = 0; i < n; i++) {
-		std::cout << "(" << i + 1 << ") ";
-		animals[i]->makeSound();
+	std::cout << std::endl << YELLOW << "\t\t[ Make Sound ]" << RESET << std::endl;
+	for (int i = 0; i < nb && i < nb; i++) {
+		std::cout << std::endl << BLUE << "(" << i + 1 << ")\t" << RESET;
+		tab[i]->makeSound();
 	}
 
-	std::cout << "\033[0;33m[ Deleting classes ]\033[0m" << std::endl;
-	for (unsigned int i = 0; i < n; i++) {
-		std::cout << "(" << i + 1 << ") ";
-		delete animals[i];
+	std::cout << std::endl << YELLOW << "\t\t[ Destructor ]" << RESET << std::endl;
+	for (int i = 0; i < nb && i < nb; i++) {
+		std::cout << std::endl << BLUE << "(" << i + 1 << ")\t" << RESET << std::endl;
+		delete tab[i];
 	}
+
+	std::cout << std::endl << YELLOW << "\t\t[ Brains deepCopy ]" << RESET << std::endl;
+	AAnimal *cat = new Cat();
+	AAnimal *newCat;
+
+	newCat = cat->clone();
+	std::cout << cat->getIdea(41) << " "<< __LINE__ << std::endl;
+	cat->setIdea(41, "🧠 | New Idea");
+	std::cout << cat->getIdea(41) << " "<< __LINE__ << std::endl;
+	std::cout << newCat->getIdea(41) << " "<< __LINE__ << std::endl;
+
+	delete cat;
+	delete newCat;
 
 	return 0;
 }
