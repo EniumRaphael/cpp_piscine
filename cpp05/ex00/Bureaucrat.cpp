@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:49:52 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/16 22:00:36 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/16 22:16:30 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Bureaucrat::Bureaucrat(void) : _name("Roger"), _grade(150) {
  * @param name the name of the Bureaucrat
  * @param grade grade to start the carreer
  */
-Bureaucrat::Bureaucrat(std::string name, u_int8_t grade) : _name(name) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	std::cout << "[Bureaucrat] Smart constructor called" << std::endl;
 	if (grade < 1) {
 		throw GradeTooHighException();
@@ -68,7 +68,7 @@ Bureaucrat::~Bureaucrat() {
  *
  * @return grade (unsigned int 8bits)
  */
-u_int8_t Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade() const {
 	return (this->_grade);
 }
 

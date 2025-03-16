@@ -22,7 +22,9 @@ RM = rm -rf
 #  Mandatory flags for 42
 CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
 #  Flags to debug and have the dependences (can be removed for correction)
-CXXFLAGS += -MMD -g3
+CXXFLAGS += -MMD
+
+DEBUG += -g3 -fsanitize=address
 
 # Sources
 SRC =	Bureaucrat.cpp \
