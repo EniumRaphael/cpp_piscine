@@ -12,7 +12,7 @@
 # Variables
 
 # Name
-NAME = polymorphism
+NAME = bureaucrat
 
 # Commands
 CXX = c++
