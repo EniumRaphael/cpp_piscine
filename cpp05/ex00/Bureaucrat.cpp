@@ -82,6 +82,27 @@ std::string Bureaucrat::getName() const {
 }
 
 /**
+ * @brief Get a promotion for the Bureaucrat
+ */
+void Bureaucrat::promote() {
+	if (this->_grade == 1) {
+		throw GradeTooHighException();
+	} else {
+		--this->_grade;
+	}
+}
+
+/**
+ * @brief Get a demotion for the Bureaucrat
+ */
+void Bureaucrat::demote() {
+	if (this->_grade == 150) {
+		throw GradeTooLowException();
+	} else {
+		++this->_grade;
+	}
+}
+/**
  * @brief Overload of the '<<' operator to print
  *
  * @param output previous output
