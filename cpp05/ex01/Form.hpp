@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:20:06 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/17 20:17:37 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/17 22:00:37 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
 
 class Bureaucrat;
 
@@ -35,6 +36,17 @@ class Form {
 				return ("Error:\n> Grade is too low (have to be higher than 150)");
 			}
 		};
+		class FormForSupperior: public std::exception {
+			virtual const char *what() const throw() {
+				return ("the bureaucrat grade is too low !");
+			}
+		};
+		class FormAlreadySigned: public std::exception {
+			virtual const char *what() const throw() {
+				return ("form is already signed !");
+			}
+		};
+
 		std::string getName() const;
 		void beSigned(Bureaucrat &bureaucrat);
 		int getExecute() const;

@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:48:33 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/17 17:06:04 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/17 22:00:20 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Bureaucrat {
 		int getGrade(void) const;
 		void promote(void);
 		void demote(void);
-		void signForm(Form const &form);
+		void signForm(Form &form);
 		class GradeTooHighException : public std::exception {
 			virtual const char *what() const throw() {
 				return ("Error:\n> Grade is too high (have to be lower than 1)");
