@@ -23,10 +23,10 @@ RM = rm -rf
 CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
 #  Flags to have the dependences (can be removed for correction)
 CXXFLAGS += -MMD
-#  Flags to have the debug (can be removed for correction)
-DEBUG = -g3
-DEBUG += -fsanitize=address
-CXXFLAGS += $(DEBUG)
+#  Flags to have the debug
+# DEBUG = -g3
+# DEBUG += -fsanitize=address
+# CXXFLAGS += $(DEBUG)
 
 # Sources
 SRC =	Bureaucrat.cpp \
