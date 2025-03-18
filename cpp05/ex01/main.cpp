@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:47:26 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/17 20:43:54 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/18 09:42:11 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <ostream>
 
 int	main(void) {
-
 	std::cout << YELLOW << "\t\t[ Testing with the grade 0 ]" << RESET << std::endl;
 	try {
 		Bureaucrat b1("Roger", 0);
@@ -62,21 +61,30 @@ int	main(void) {
 	}
 	std::cout << std::endl << std::endl << b2 << std::endl << std::endl;
 
+	std::cout << b2 << std::endl;
 	try {
 		b2.promote();
 	} catch (std::exception & err) {
 		std::cerr << RED << err.what() << RESET << std::endl;
 	}
-
+	std::cout << b2 << std::endl;
 	std::cout << std::endl << YELLOW << "\t\t[ Testing the overload of the '<<' operator ]" << RESET << std::endl;
 	Form f1("Norme to cpp", 1, 1);
 	std::cout << f1 << std::endl;
 
-	std::cout << std::endl << YELLOW << "\t\t[ Testing beSigned() methode with a new form]" << RESET << std::endl;
-	f1.beSigned(b1);
+	std::cout << std::endl << YELLOW << "\t\t[ Testing beSigned() methode with a new form ]" << RESET << std::endl;
+	try {
+		b2.signForm(f1);
+	} catch (std::exception & err) {
+		std::cerr << RED << err.what() << RESET << std::endl;
+	}
 	std::cout << f1 << std::endl;
 
 	std::cout << std::endl << YELLOW << "\t\t[ Testing beSigned() methode with a signed form ]" << RESET << std::endl;
-	f1.beSigned(b1);
+	try {
+		b2.signForm(f1);
+	} catch (std::exception & err) {
+		std::cerr << RED << err.what() << RESET << std::endl;
+	}
 	std::cout << f1 << std::endl;
 }
