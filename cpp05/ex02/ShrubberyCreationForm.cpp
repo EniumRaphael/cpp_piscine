@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 18:05:02 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/19 15:52:44 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/19 20:25:27 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 			"_- -   | | _- _" << std::endl << \
 			"  _ -  | |   -_" << std::endl << \
 			"      // \\\\" << std::endl << std::endl;
+		file.close();
 				}
 }
