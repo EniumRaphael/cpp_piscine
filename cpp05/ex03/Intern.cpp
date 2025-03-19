@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 19:43:56 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/19 20:18:23 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/19 20:29:04 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 Intern::Intern() {
 	std::cout << "[Intern] default constructor" << std::endl;
+	_ptr = NULL;
 }
 
 Intern::Intern(Intern const & copy) {
@@ -31,6 +32,7 @@ Intern& Intern::operator= (Intern const & assign) {
 }
 
 Intern::~Intern() {
+	delete this->_ptr;
 	std::cout << "[Intern] destructor" << std::endl;
 }
 
@@ -41,16 +43,16 @@ Form* Intern::makeForm(std::string type, std::string target) {
 			std::cout << "Intern creates " << type << std::endl;
 			switch (i) {
 				case 0:
-					return new ShrubberyCreationForm(target);
+					_ptr = new ShrubberyCreationForm(target);
 				case 1:
-					return new RobotomyRequestForm(target);
+					_ptr = new RobotomyRequestForm(target);
 				case 2:
-					return new PresidentialPardonForm(target);
+					_ptr = new PresidentialPardonForm(target);
 				default:
 					break;
 			}
 		}
 	}
 	std::cout << "Intern could not create " << type << std::endl;
-	return NULL;
+	return _ptr;
 }
