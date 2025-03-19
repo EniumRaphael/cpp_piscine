@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:19:41 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/18 11:44:31 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/18 15:09:05 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 /**
- * @brief Constructor by default of Form
+ * @brief Constructor by default of AForm
  */
-Form::Form(void) : _name("Default"), _signed(false), _to_execute(150), _to_sign(150) {
-	std::cout << "[Form] Default constructor called" << std::endl;
+AForm::AForm(void) : _name("Default"), _signed(false), _to_execute(150), _to_sign(150) {
+	std::cout << "[AForm] Default constructor called" << std::endl;
 }
-Form::Form(std::string const name, int execute, int sign) : _name(name), _signed(false) {
+AForm::AForm(std::string const name, int execute, int sign) : _name(name), _signed(false) {
 	if (execute < 1) {
 		throw GradeTooHighException();
 	} else if (execute > 150) {
@@ -34,19 +34,19 @@ Form::Form(std::string const name, int execute, int sign) : _name(name), _signed
 	} else {
 		this->_to_sign = sign;
 	}
-	std::cout << "[Form] Smart constructor called" << std::endl;
+	std::cout << "[AForm] Smart constructor called" << std::endl;
 }
 
-Form::Form(Form const &copy) {
-	std::cout << "[Form] Copy constructor called" << std::endl;
+AForm::AForm(AForm const &copy) {
+	std::cout << "[AForm] Copy constructor called" << std::endl;
 	this->_name = copy._name;
 	this->_to_sign = copy._to_sign;
 	this->_to_execute = copy._to_execute;
 	_signed = copy._signed;
 }
 
-Form& Form::operator=(Form const &assign) {
-	std::cout << "[Form] Assign constructor called" << std::endl;
+AForm& AForm::operator=(AForm const &assign) {
+	std::cout << "[AForm] Assign constructor called" << std::endl;
 	this->_name = assign._name;
 	this->_to_sign = assign._to_sign;
 	this->_to_execute = assign._to_execute;
@@ -54,36 +54,55 @@ Form& Form::operator=(Form const &assign) {
 	return *this;
 }
  
-Form::~Form() {
-	std::cout << "[Form] Destructor called" << std::endl;
+AForm::~AForm() {
+	std::cout << "[AForm] Destructor called" << std::endl;
 }
 
-std::string Form::getName() const {
+std::string AForm::getName() const {
 	return this->_name;
 }
 
-int Form::getExecute() const {
+int AForm::getExecute() const {
 	return this->_to_execute;
 }
 
-int Form::getSign() const {
+int AForm::getSign() const {
 	return this->_to_sign;
 }
 
-bool Form::isSigned() const {
+bool AForm::isSigned() const {
 	return this->_signed;
 }
 
-std::ostream& operator<<(std::ostream& output, Form const &toPrint) {
+void AForm::setSign(int new_sign) {
+	this->_to_sign = new_sign;
+}
+
+void AForm::setExecute(int new_exec) {
+	this->_to_execute = new_exec;
+}
+
+std::ostream& operator<<(std::ostream& output, AForm const &toPrint) {
 	output << toPrint.getName() << ", Form\n\tTo execute: " << toPrint.getExecute() << "\n\tTo sign: " << toPrint.getSign() << "\n\tAlready signed: " << (toPrint.isSigned() ? "✅ | Yes" : "❌ | No");
 	return (output);
 }
 
-void Form::beSigned(Bureaucrat const &bureaucrat) const {
+void AForm::execute(Bureaucrat const &executor) const {
+	if (executor.getGrade() > this->_to_execute) {
+		throw AFormForSupperior();
+	} else if (_signed == false) {
+		throw AFormAlreadySigned();
+	}
+	else {
+		std::cout << "Bureaucrat " << executor.getName() << " executes the Form " << this->_name << std::endl;
+	}
+}
+
+void AForm::beSigned(Bureaucrat const &bureaucrat) const {
 	if (bureaucrat.getGrade() > this->_to_sign) {
-		throw FormForSupperior();
+		throw AFormForSupperior();
 	} else if (_signed == true) {
-		throw FormAlreadySigned();
+		throw AFormAlreadySigned();
 	}
 	else {
 		std::cout << "Bureaucrat " << bureaucrat.getName() << " signs the Form " << this->_name << std::endl;

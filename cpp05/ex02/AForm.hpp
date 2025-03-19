@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:20:06 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/18 11:49:04 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/18 17:49:34 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Form_HPP
-#define Form_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <string>
 #include <iostream>
 #include <exception>
+#include "AForm.hpp"
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	public:
-		Form();
-		Form(std::string const name, int execute, int sign);
-		Form(Form const &copy);
-		Form& operator=(Form const &assign);
-		~Form();
+		AForm();
+		AForm(std::string const name, int execute, int sign);
+		AForm(AForm const &copy);
+		AForm& operator=(AForm const &assign);
+		~AForm();
 		class GradeTooHighException : public std::exception {
 			virtual const char *what() const throw() {
 				return ("Error:\n> Grade is too high (have to be lower than 1)");
@@ -36,22 +37,25 @@ class Form {
 				return ("Error:\n> Grade is too low (have to be higher than 150)");
 			}
 		};
-		class FormForSupperior: public std::exception {
+		class AFormForSupperior: public std::exception {
 			virtual const char *what() const throw() {
 				return ("the bureaucrat grade is too low !");
 			}
 		};
-		class FormAlreadySigned: public std::exception {
+		class AFormAlreadySigned: public std::exception {
 			virtual const char *what() const throw() {
 				return ("form is already signed !");
 			}
 		};
 
-		std::string getName() const;
 		void beSigned(Bureaucrat const &bureaucrat) const;
+		virtual void execute(Bureaucrat const &executor) const = 0;
 		int getExecute() const;
 		int getSign() const;
+		std::string getName() const;
 		bool isSigned() const;
+		void setSign(int new_sign);
+		void setExecute(int new_exec);
 	private:
 		std::string _name;
 		mutable bool _signed;
@@ -59,6 +63,6 @@ class Form {
 		int _to_sign;
 };
 
-std::ostream& operator<<(std::ostream& output, Form const &Form);
+std::ostream& operator<<(std::ostream& output, AForm const &Form);
 
 #endif
