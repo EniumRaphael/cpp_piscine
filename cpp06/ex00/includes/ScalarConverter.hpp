@@ -6,13 +6,18 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:50:13 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/21 15:05:26 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/22 22:20:50 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+
+bool isInt(std::string const &str);
+void convertInt(std::string const &str);
+bool isChar(std::string const &str);
+void convertChar(std::string const &str);
 
 class ScalarConverter {
 	public:

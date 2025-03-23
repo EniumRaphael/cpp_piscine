@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/03/21 15:09:04 by rparodi          ###   ########.fr        #
+#    Updated: 2025/03/22 22:20:09 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ DEBUG += -fsanitize=address
 CXXFLAGS += $(DEBUG)
 
 # Sources
-SRC =	sources/ScalarConverter.cpp \
+SRC =	sources/char.cpp \
+		sources/ScalarConverter.cpp \
+		sources/integer.cpp \
 		main.cpp
 
 # Objects
