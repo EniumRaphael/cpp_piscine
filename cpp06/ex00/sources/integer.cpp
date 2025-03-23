@@ -6,11 +6,13 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 22:11:44 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/23 12:01:21 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/23 18:44:01 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <cstdlib>
+#include <climits>
 
 bool isInt(std::string const &str) {
 	long long tmp = std::atoll(str.c_str());
