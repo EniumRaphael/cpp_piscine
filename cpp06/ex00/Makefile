@@ -6,14 +6,14 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/03/22 22:20:09 by rparodi          ###   ########.fr        #
+#    Updated: 2025/03/23 18:59:18 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 
 # Name
-NAME = intern
+NAME = convert
 
 # Commands
 CXX = c++
