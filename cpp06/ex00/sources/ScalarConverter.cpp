@@ -6,17 +6,11 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 16:41:16 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/23 15:01:09 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:07:58 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <cctype>
-#include <cstdlib>
-#include <cstring>
-#include <limits>
-#include <sstream>
-#include <string>
 
 ScalarConverter::ScalarConverter() {
 	std::cout << "[ScalarConverter] Default constructor called" << std::endl;
@@ -38,19 +32,34 @@ ScalarConverter& ScalarConverter::operator = (ScalarConverter const &assign) {
 }
 
 void ScalarConverter::convert(std::string *input) {
-	// std::cout << "Input:\t\t" << *input << std::endl;
-	if (isChar(input->c_str()))
+	if (*input == "nan" || *input == "nanf")
+		not_a_number();
+	else if (*input == "-inf" || *input == "-inff")
+		minus_infinity();
+	else if (*input == "+inf" || *input == "+inff")
+		plus_infinity();
+	else if (isChar(input->c_str())) {
 		convertChar(*input);
-	else if (isInt(input->c_str()))
-		convertInt(*input);
-	// else if (isFloat(input))
-	// 	convertFloat(*input);
-	// else if (isDouble(input))
-	// 	convertDouble(*input);
-	// else
-	// 	std::cout << "Error: Invalid input" << std::endl;
-	// std::cout << "IsChar:\t\t" << (isChar(input->c_str()) ? "✅ | true" : "❌ | false") << std::endl;
-	// std::cout << "IsInt:\t\t" << (isInt(input->c_str()) ? "✅ | true" : "❌ | false") << std::endl;
-	// std::cout << "IsFloat:\t" << (isFloat(input) ? "✅ | true" : "❌ | false") << std::endl;
-	// std::cout << "IsDouble:\t" << (isDouble(input) ? "✅ | true" : "❌ | false") << std::endl;
+	}
+	else if (isInt(input->c_str())) {
+		try {
+			convertInt(*input);
+		} catch (std::exception &e) {
+			std::cerr << CLR_RED << e.what() << CLR_RESET << std::endl;
+			return;
+		}
+	}
+	else if (isFloat(input->c_str())) {
+		convertFloat(*input);
+	}
+	else if (isDouble(input->c_str())) {
+		convertDouble(*input);
+	}
+	else
+	{
+		std::cout << CLR_BLUE << "Char:\t" << CLR_RED << " Impossible" << CLR_RESET << std::endl;
+		std::cout << CLR_BLUE << "Int:\t" << CLR_RED << " Impossible" << CLR_RESET << std::endl;
+		std::cout << CLR_BLUE << "Float:\t" << CLR_RED << " Impossible" << CLR_RESET << std::endl;
+		std::cout << CLR_BLUE << "Double:\t" << CLR_RED << " Impossible" << CLR_RESET << std::endl;
+	}
 }

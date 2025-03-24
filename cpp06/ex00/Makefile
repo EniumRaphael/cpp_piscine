@@ -26,13 +26,16 @@ CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
 CXXFLAGS += -MMD
 #  Flags to have the debug (can be removed for correction)
 DEBUG = -g3
-DEBUG += -fsanitize=address
+# DEBUG += -fsanitize=address
 CXXFLAGS += $(DEBUG)
 
 # Sources
 SRC =	sources/char.cpp \
-		sources/ScalarConverter.cpp \
+		sources/exeception.cpp \
+		sources/float.cpp \
 		sources/integer.cpp \
+		sources/double.cpp \
+		sources/ScalarConverter.cpp \
 		main.cpp
 
 # Objects
