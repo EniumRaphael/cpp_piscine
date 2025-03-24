@@ -6,18 +6,36 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:50:13 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/22 22:20:50 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/24 14:44:46 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
+#include "color.hpp"
 
-bool isInt(std::string const &str);
-void convertInt(std::string const &str);
+#include <cctype>
+#include <cerrno>
+#include <climits>
+#include <cstdlib>
+#include <cstring>
+#include <iomanip>
+#include <iostream>
+#include <limits>
+#include <sstream>
+#include <string>
+
 bool isChar(std::string const &str);
+bool isDouble(std::string const &str);
+bool isFloat(std::string const &str);
+bool isInt(std::string const &str);
 void convertChar(std::string const &str);
+void convertDouble(std::string const &str);
+void convertFloat(std::string const &str);
+void convertInt(std::string const &str);
+void minus_infinity();
+void not_a_number();
+void plus_infinity();
 
 class ScalarConverter {
 	public:

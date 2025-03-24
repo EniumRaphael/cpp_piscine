@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/03/23 18:59:18 by rparodi          ###   ########.fr        #
+#    Updated: 2025/03/24 14:51:15 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,7 @@ footer:
 		@printf '              $(GREY)The compilation is$(END) $(GOLD)finish$(END)\n               $(GREY)Have a good $(END)$(GOLD)correction !$(END)\n'
 
 clangd:
-	@echo 											\
+	@echo -e											\
 	"CompileFlags:\n"								\
 	"  Add:\n"										\
 	"    - \"-std=c++98 -Wall -Wextra -Werror\"\n"	\
