@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/03/24 16:45:14 by rparodi          ###   ########.fr        #
+#    Updated: 2025/03/26 11:54:17 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
 #  Flags to have the dependences (can be removed for correction)
 CXXFLAGS += -MMD
 #  Flags to have the debug (can be removed for correction)
-DEBUG = -g3
+# DEBUG = -g3
 # DEBUG += -fsanitize=address
-CXXFLAGS += $(DEBUG)
+# CXXFLAGS += $(DEBUG)
 
 # Sources
 SRC =	sources/Serializer.cpp \
