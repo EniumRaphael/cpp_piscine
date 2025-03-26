@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 11:58:38 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/26 14:04:34 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/26 14:10:19 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 #include <typeinfo>
 #include "color.hpp"
 
+/**
+ * @brief Generate a random class (A / B / C)
+ *
+ * @return the pointer to the class
+ */
 Base* generate(void) {
 	std::srand(std::time(NULL));
 	int choice = std::rand();
