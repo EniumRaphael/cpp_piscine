@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 17:45:03 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/28 18:21:04 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/28 18:45:52 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,14 @@ int main(void) {
 	std::cout << CLR_BLUE << "After:\t\t" << CLR_GOLD << c << " " << d << CLR_RESET << std::endl;
 	std::cout << CLR_BLUE << "Minimal:\t" << CLR_GOLD << ::min(c, d) << CLR_RESET << std::endl;
 	std::cout << CLR_BLUE << "Maximal:\t" << CLR_GOLD << ::max(c, d) << CLR_RESET << std::endl;
+	std::cout << std::endl;
+	std::string e = "Hello";
+	std::string f = "World";
+	std::cout << CLR_YELLOW << "[ Testing swap with integer " << CLR_GOLD << e << CLR_YELLOW << " / " << CLR_GOLD << f << CLR_YELLOW << " ]" << CLR_RESET << std::endl;
+	std::cout << CLR_BLUE << "Before:\t\t" << CLR_GOLD << e << " " << f << CLR_RESET << std::endl;
+	::swap(e, f);
+	std::cout << CLR_BLUE << "After:\t\t" << CLR_GOLD << e << " " << f << CLR_RESET << std::endl;
+	std::cout << CLR_BLUE << "Minimal:\t" << CLR_GOLD << ::min(e, f) << CLR_RESET << std::endl;
+	std::cout << CLR_BLUE << "Maximal:\t" << CLR_GOLD << ::max(e, f) << CLR_RESET << std::endl;
 	return 0;
 }
