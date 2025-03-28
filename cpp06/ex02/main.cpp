@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 11:58:38 by rparodi           #+#    #+#             */
-/*   Updated: 2025/03/26 14:10:19 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:18:27 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 #include "B.hpp"
 #include "C.hpp"
 
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-#include <typeinfo>
 #include "color.hpp"
 
 /**
@@ -34,19 +30,34 @@ Base* generate(void) {
 		case 0:
 		{
 			std::cout << std::endl << CLR_YELLOW << "\t[ Chosen has a value of " << CLR_GOLD << choice << CLR_YELLOW << " and A it's chosen ]" << CLR_RESET << std::endl << std::endl;
-			ptr = new A;
+			try {
+				ptr = new (std::nothrow) A;
+			} catch (const std::bad_alloc &err) {
+				std::cerr << CLR_RED << "Error: " << err.what() << " " << __FILE_NAME__ << ":" << __LINE__ << CLR_RESET << std::endl;
+				exit(1);
+			}
 			break;
 		}
 		case 1:
 		{
 			std::cout << std::endl << CLR_YELLOW << "\t[ Chosen has a value of " << CLR_GOLD << choice << CLR_YELLOW << " and B it's chosen ]" << CLR_RESET << std::endl << std::endl;
-			ptr = new B;
+			try {
+				ptr = new B;
+			} catch (const std::bad_alloc &err) {
+				std::cerr << CLR_RED << "Error: " << err.what() << " " << __FILE_NAME__ << ":" << __LINE__ << CLR_RESET << std::endl;
+				exit(1);
+			}
 			break;
 		}
 		case 2:
 		{
 			std::cout << std::endl << CLR_YELLOW << "\t[ Chosen has a value of " << CLR_GOLD << choice << CLR_YELLOW << " and C it's chosen ]" << CLR_RESET << std::endl << std::endl;
-			ptr = new C;
+			try {
+				ptr = new C;
+			} catch (const std::bad_alloc &err) {
+				std::cerr << CLR_RED << "Error: " << err.what() << " " << __FILE_NAME__ << ":" << __LINE__ << CLR_RESET << std::endl;
+				exit(1);
+			}
 			break;
 		}
 		default:
