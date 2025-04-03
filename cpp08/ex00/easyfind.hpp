@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 10:16:18 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/03 11:46:18 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/03 13:41:46 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <deque>
 #include <list>
 
 #define CLR_RESET "\033[0m"

@@ -6,12 +6,11 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 10:14:39 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/03 12:04:11 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/03 13:41:47 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
-#include <deque>
 
 int	main(void) {
 	std::cout << CLR_GREEN << "Trying using int vector" << std::endl;
