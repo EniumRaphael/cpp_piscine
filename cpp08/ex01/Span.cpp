@@ -6,27 +6,29 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:54:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/04 14:30:53 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/04 15:08:10 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <algorithm>
+#include <iterator>
 
-Span::Span() : _size(0), _vec() {
+Span::Span() : _max(0), _size(0), _vec() {
 	std::cout << CLR_CYAN << "[Span] Default constructor called" << CLR_RESET << std::endl;
 }
 
-Span::Span(unsigned int size) : _size(size), _vec() {
+Span::Span(unsigned int size) : _max(size), _size(0), _vec() {
 	std::cout << CLR_CYAN << "[Span] Constructor with size called" << CLR_RESET << std::endl;
 }
 
-Span::Span(Span const &copy) : _size(copy._size), _vec(_size) {
+Span::Span(Span const &copy) : _max(copy._max), _size(copy._size), _vec(_size) {
 	std::cout << CLR_CYAN << "[Span] Copy constructor called" << CLR_RESET << std::endl;
 }
 
 Span& Span::operator=(Span const &assign) {
 	if (this != &assign) {
+		this->_max = assign._max;
 		this->_size = assign._size;
 		this->_vec = assign._vec;
 	}
