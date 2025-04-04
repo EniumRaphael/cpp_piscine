@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/04 13:32:29 by rparodi           #+#    #+#             */
+/*   Updated: 2025/04/04 14:08:09 by rparodi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
+
+#include <iostream>
+#include <stack>
+#include <iterator>
+#include <list>
+
+template <typename T>
+class MutantStack : public std::stack<T> {
+	public:
+		MutantStack();
+		MutantStack(const MutantStack &copy);
+		MutantStack<T>& operator=(const MutantStack<T> &assign);
+		~MutantStack();
+
+		typedef typename std::stack<T>::container_type container_type;
+		typedef typename container_type::iterator iterator;
+		typedef typename container_type::const_iterator const_iterator;
+
+		iterator begin();
+		iterator end();
+		const_iterator begin() const;
+		const_iterator end() const;
+	private:
+};
+
+#define CLR_RESET "\033[0m"
+
+#define CLR_BLACK "\033[0;30m"
+#define CLR_RED "\033[0;31m"
+#define CLR_GREEN "\033[0;32m"
+#define CLR_YELLOW "\033[0;33m"
+#define CLR_BLUE "\033[0;34m"
+#define CLR_MAGENTA "\033[0;35m"
+#define CLR_CYAN "\033[0;36m"
+#define CLR_WHITE "\033[0;37m"
+#define CLR_GOLD "\033[38;5;220m"
+#define CLR_GREY "\033[38;5;240m"
+
+#include "MutantStack.tpp"
