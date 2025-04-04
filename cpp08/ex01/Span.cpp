@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:54:01 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/03 16:23:31 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:30:53 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ Span::~Span() {
 	std::cout << CLR_MAGENTA << "[Span] Destructor called" << CLR_RESET << std::endl;
 }
 
+/**
+ * @brief Add a number at the end of the vector
+ *
+ * @param number the number to add
+ */
 void Span::addNumber(int number) {
 	++_size;
 	if (_vec.size() > this->_size) {
