@@ -45,6 +45,21 @@ Span::~Span() {
  *
  * @param number the number to add
  */
+void Span::addNumbers(std::vector<int>::iterator start, std::vector<int>::iterator end) {
+	size_t count = std::distance(start, end);
+	if (_max < _size + count) {
+		throw std::out_of_range("Span is full");
+	}
+	_size += count;
+	
+	_vec.insert(_vec.end(), start, end);
+}
+
+/**
+ * @brief Add a number at the end of the vector
+ *
+ * @param number the number to add
+ */
 void Span::addNumber(int number) {
 	++_size;
 	if (_vec.size() > this->_size) {
