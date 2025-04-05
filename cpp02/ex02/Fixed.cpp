@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 19:52:44 by rparodi           #+#    #+#             */
-/*   Updated: 2025/02/15 19:16:27 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/05 14:56:17 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ bool Fixed::operator>=(Fixed const &other) const {
 }
 
 bool Fixed::operator<=(Fixed const &other) const {
-	return this->_fixed_value < other._fixed_value ? false : true;
+	return this->_fixed_value > other._fixed_value ? false : true;
 }
 
 Fixed & Fixed::operator++() {
