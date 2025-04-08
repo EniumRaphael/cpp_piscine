@@ -32,3 +32,5 @@ array
 easyfind
 span
 mutated
+*.csv
+*.tgz
