@@ -4,6 +4,10 @@ build/
 *.d
 *.o
 *.txt
+*.replace
+*_shrubbery
+*.csv
+*.tgz
 phonebook
 .DS_Store
 megaphone
@@ -18,10 +22,8 @@ harlFilter
 Fixed
 open
 polymorphism
-*.replace
 form
 bureaucrat
-*_shrubbery
 intern
 serialize
 convert
@@ -32,5 +34,3 @@ array
 easyfind
 span
 mutated
-*.csv
-*.tgz
