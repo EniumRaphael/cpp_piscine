@@ -6,13 +6,15 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:18:18 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/08 12:19:08 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/10 16:05:21 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <unistd.h>
+#include <cstdlib>
 
 #define CLR_RESET "\033[0m"
 
