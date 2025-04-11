@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/04/11 11:23:29 by rparodi          ###   ########.fr        #
+#    Updated: 2025/04/11 12:35:05 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,6 @@ clean:
 # Clean (make fclean)
 fclean: clean
 	@printf '$(GREY) Removing $(END)$(RED)Program$(END)\n'
-	@$(RM) ./data.csv
 	@$(RM) $(NAME)
 	@echo ""
 

@@ -6,22 +6,35 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/11 11:47:18 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:38:36 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include <cstdlib>
 #include <fstream>
+#include <iostream>
 #include <map>
 #include <string>
+#include <unistd.h>
+
 
 std::map<std::string, float>parse_file(std::string name) {
 	std::map<std::string, float> to_ret;
-	std::string tmp;
+	std::string tmpLine;
 	std::ifstream file(name);
+	size_t line = 1;
 
-	while (std::getline(file, tmp)) {
-		;
+	while (std::getline(file, tmpLine)) {
+		std::size_t limit = tmpLine.find(" | ");
+		if (limit == std::string::npos) {
+			std::cerr << CLR_RED << "Limiter not found at the line " << line << CLR_RESET << std::endl;
+			exit(1);
+		} else {
+			std::string tmpDate = tmpLine.substr(0, limit);
+			float tmpValue = std::atof(tmpLine.substr(limit + 3).c_str());
+			to_ret.insert(std::pair<std::string, float>(tmpDate, tmpValue));
+		}
 	}
 	return to_ret;
 }
