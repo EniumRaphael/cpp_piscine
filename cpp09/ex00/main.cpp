@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/11 15:07:21 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/11 16:06:02 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ enum error_code {
 	NEGATIVE,
 	NO_FORMAT,
 	NO_DATE,
+	NO_FLOAT,
 	NO_LIMIT,
 	TOO_LARGE
 };
@@ -27,6 +28,13 @@ typedef struct s_value {
 	enum error_code reason;
 	float value;
 } value;
+
+value convertValue (enum error_code error, float value) {
+	s_value to_return;
+	to_return.reason = error;
+	to_return.value = value;
+	return to_return;
+}
 
 bool is_valid_format_date(std::string str)  {
     regex_t regex;
@@ -41,6 +49,7 @@ bool is_valid_format_date(std::string str)  {
 	regfree(&regex);
 	return true;
 }
+
 std::string check_date(std::string name, enum error_code *error_code) {
 	if (!is_valid_format_date(name)) {
 		*error_code = NO_FORMAT;
@@ -70,11 +79,31 @@ std::string check_date(std::string name, enum error_code *error_code) {
 	return (name);
 }
 
-value convertValue (enum error_code error, float value) {
-	s_value to_return;
-	to_return.reason = error;
-	to_return.value = value;
-	return to_return;
+float	check_value(std::string value, enum error_code *error_code) {
+	bool has_dot = false;
+	if (value.at(0) == '-') {
+		*error_code = NEGATIVE;
+		return 0;
+	}
+	for (size_t i = 0; i < value.length(); i++) {
+		if (value[i] == '.') {
+			if (has_dot == true) {
+				*error_code = NO_FLOAT;
+				return 0;
+			}
+			has_dot = true;
+			continue;
+		}
+		if (isdigit(value[i]) == false) {
+			*error_code = NO_FLOAT;
+			return 0;
+		}
+	}
+	if (value.size() >= 4 || atof(value.c_str()) > 1000) {
+		*error_code = TOO_LARGE;
+		return 0;
+	}
+	return (atof(value.c_str()));
 }
 
 std::map<std::string, value>parse_input(std::string name) {
@@ -96,7 +125,7 @@ std::map<std::string, value>parse_input(std::string name) {
 		} else {
 			tmpDate = check_date(tmpLine.substr(0, limit), &tmpError);
 			if (tmpError == NO_ERROR) {
-				tmpValue = std::atof(tmpLine.substr(limit + 3).c_str());
+				tmpValue = check_value(tmpLine.substr(limit + 3).c_str(), &tmpError);
 			}
 		}
 		to_ret.insert(std::pair<std::string, value>(tmpDate, convertValue(tmpError, tmpValue)));
@@ -118,7 +147,7 @@ int	main(int argc, char *argv[]) {
 		exit( 1);
 	}
 	if (access("data.csv", F_OK)) {
-		std::cerr << CLR_RED << "The file `data.csv` have to exist (to take it from the intra make get_db)" << CLR_RESET << std::endl;
+		std::cerr << CLR_RED << "The file `data.csv` have to exist (to take it from the intra `make get_db`)" << CLR_RESET << std::endl;
 		exit(1);
 	}
 	if (access("data.csv", R_OK)) {
