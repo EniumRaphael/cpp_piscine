@@ -196,6 +196,18 @@ std::map<size_t, value>parse_input(std::string name) {
 	return to_ret;
 }
 
+std::map<std::string, unsigned int > get_db() {
+	std::map<std::string, unsigned int> db;
+	std::ifstream file("data.csv");
+	std::string line;
+	while (std::getline(file, line)) {
+		std::size_t limit = line.find(',');
+		if (limit != std::string::npos) {
+			db.insert(std::make_pair(line.substr(0, limit), atoi(line.substr(limit + 1).c_str())));
+		}
+	}
+	return db;
+}
 int	main(int argc, char *argv[]) {
 	if (argc != 2) {
 		std::cerr << CLR_RED << "Usage: " << argv[0] << " <filename>" << CLR_RESET << std::endl;
@@ -218,5 +230,6 @@ int	main(int argc, char *argv[]) {
 		exit( 1);
 	}
 	std::map<size_t, value> user_db = parse_input(argv[1]);
+	get_db();
 	debug_print_map(user_db);
 }
