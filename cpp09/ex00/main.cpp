@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/12 18:29:34 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/12 22:30:40 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,25 @@ std::string error_code_to_string(enum error_code code) {
 }
 
 void debug_print_map(const std::map<size_t, value>& data) {
-	std::cout << CLR_BLUE << "============= "<< CLR_YELLOW << "Debug: Contents of map" << CLR_BLUE << " =============" << CLR_RESET << std::endl;
-	std::cout << std::left
-		<< std::setw(15) << CLR_YELLOW << "Key" << CLR_RESET
-		<< std::setw(10) << CLR_YELLOW << "Value" << CLR_RESET
-		<< std::setw(15) << CLR_YELLOW << "Date" << CLR_RESET
-		<< std::setw(15) << CLR_YELLOW << "Reason"
+	std::cout << std::endl << std::left
+		<< "\t" << CLR_YELLOW << "Key" << CLR_RESET
+		<< "\t" << CLR_YELLOW << "Value" << CLR_RESET
+		<< "\t   " << CLR_YELLOW << "Date" << CLR_RESET
+		<< "\t\t" << CLR_YELLOW << "Reason"
 		<< std::endl;
 
 	std::cout << CLR_BLUE << std::string(50, '-') << CLR_RESET << std::endl;
 
 	for (std::map<size_t, value>::const_iterator it = data.begin(); it != data.end(); ++it) {
-		if (it->first != 1) {
+		if (it->first != 0) {
 			std::cout << std::left
-				<< "\t" << CLR_GOLD << it->first << CLR_RESET
+				<< "\t " << CLR_GOLD << it->first << CLR_RESET
 				<< "\t" << CLR_GREEN << std::fixed << std::setprecision(2) << it->second.value << CLR_RESET
 				<< "\t" << CLR_CYAN << std::fixed << it->second.date << CLR_RESET
 				<< "\t" << error_code_to_string(it->second.reason) << CLR_RESET
 				<< std::endl;
 		}
 	}
-
-	std::cout << CLR_BLUE << std::string(50, '=') << CLR_RESET << std::endl;
 }
 
 std::string itoa_home(int i) {
@@ -176,7 +173,6 @@ std::map<size_t, value>parse_input(std::string name) {
 	size_t line = 0;
 
 	while (std::getline(file, tmpLine)) {
-		line++;
 		tmpError = NO_ERROR;
 		tmpDate.clear();
 		tmpValue = 0;
@@ -189,6 +185,7 @@ std::map<size_t, value>parse_input(std::string name) {
 			tmpValue = check_value(tmpLine.substr(limit + 3).c_str(), &tmpError);
 			to_ret.insert(std::make_pair(line, convertValue(tmpError, tmpValue, tmpDate)));
 		}
+		line++;
 	}
 	return to_ret;
 }
