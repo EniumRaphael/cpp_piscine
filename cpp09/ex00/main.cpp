@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/12 22:37:50 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/12 23:22:11 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,23 @@ std::string error_code_to_string(enum error_code code) {
 	}
 }
 
-void debug_print_map(const std::map<size_t, value>& data) {
+void _debug_print_db(const std::map<std::string, float>& data) {
+	std::cout << std::endl << std::left
+		<< "\t   " << CLR_YELLOW << "Value" << CLR_RESET
+		<< "\t" << CLR_YELLOW << "Date" << CLR_RESET
+		<< std::endl;
+
+	std::cout << CLR_BLUE << std::string(50, '-') << CLR_RESET << std::endl;
+
+	for (std::map<std::string, float>::const_iterator it = data.begin(); it != data.end(); ++it) {
+		std::cout << std::left
+			<< "\t " << CLR_GOLD << it->first << CLR_RESET
+			<< "\t" << CLR_GREEN << std::fixed << std::setprecision(2) << it->second << CLR_RESET
+			<< std::endl;
+	}
+}
+
+void _debug_print_input(const std::map<size_t, value>& data) {
 	std::cout << std::endl << std::left
 		<< "\t" << CLR_YELLOW << "Key" << CLR_RESET
 		<< "\t" << CLR_YELLOW << "Value" << CLR_RESET
@@ -174,6 +190,7 @@ std::map<size_t, value>parse_input(std::string name) {
 	std::map<size_t, value> to_ret;
 
 	std::string tmpLine;
+	std::getline(file, tmpLine);
 	std::string tmpDate;
 	float tmpValue = 0; 
 	size_t line = 0;
@@ -196,18 +213,31 @@ std::map<size_t, value>parse_input(std::string name) {
 	return to_ret;
 }
 
-std::map<std::string, unsigned int > get_db() {
-	std::map<std::string, unsigned int> db;
+std::map<std::string, float> get_db() {
+	enum error_code tmpError;
+	std::map<std::string, float> to_ret;
+
 	std::ifstream file("data.csv");
-	std::string line;
-	while (std::getline(file, line)) {
-		std::size_t limit = line.find(',');
+	std::string tmpLine;
+	std::string tmpDate;
+	std::getline(file, tmpLine);
+	float tmpValue = 0;
+
+	while (std::getline(file, tmpLine)) {
+		tmpDate.clear();
+		tmpValue = 0;
+		std::size_t limit = tmpLine.find(",");
+
 		if (limit != std::string::npos) {
-			db.insert(std::make_pair(line.substr(0, limit), atoi(line.substr(limit + 1).c_str())));
+			tmpDate = check_date(tmpLine.substr(0, limit), &tmpError);
+			tmpValue = check_value(tmpLine.substr(limit + 1).c_str(), &tmpError);
+			if (tmpError != NEGATIVE)
+				to_ret.insert(std::make_pair(tmpDate, tmpValue));
 		}
 	}
-	return db;
+	return to_ret;
 }
+
 int	main(int argc, char *argv[]) {
 	if (argc != 2) {
 		std::cerr << CLR_RED << "Usage: " << argv[0] << " <filename>" << CLR_RESET << std::endl;
@@ -230,6 +260,7 @@ int	main(int argc, char *argv[]) {
 		exit( 1);
 	}
 	std::map<size_t, value> user_db = parse_input(argv[1]);
-	get_db();
-	debug_print_map(user_db);
+	_debug_print_input(user_db);
+	std::map<std::string, float> value_db = get_db();
+	_debug_print_db(value_db);
 }
