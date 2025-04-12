@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/12 18:07:03 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/12 18:29:34 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,45 +43,47 @@ value convertValue (enum error_code error, float value, std::string date) {
 std::string error_code_to_string(enum error_code code) {
 	switch (code) {
 		case NO_ERROR:
-			return "NO_ERROR";
+			return "\033[0;35mNO_ERROR";
 		case NEGATIVE:
-			return "NEGATIVE";
+			return "\033[0;31mNEGATIVE";
 		case NO_FORMAT:
-			return "NO_FORMAT";
+			return "\033[0;31mNO_FORMAT";
 		case NO_DATE:
-			return "NO_DATE";
+			return "\033[0;31mNO_DATE";
 		case NO_LIMIT:
-			return "NO_LIMIT";
+			return "\033[0;31mNO_LIMIT";
 		case NO_FLOAT:
-			return "NO_FLOAT";
+			return "\033[0;31mNO_FLOAT";
 		case TOO_LARGE:
-			return "TOO_LARGE";
+			return "\033[0;31mTOO_LARGE";
 		default:
 			return "UNKNOWN";
 	}
 }
 
 void debug_print_map(const std::map<size_t, value>& data) {
-	std::cout << "===== Debug: Contents of map =====" << std::endl;
+	std::cout << CLR_BLUE << "============= "<< CLR_YELLOW << "Debug: Contents of map" << CLR_BLUE << " =============" << CLR_RESET << std::endl;
 	std::cout << std::left
-		<< std::setw(15) << "Key"
-		<< std::setw(10) << "Value"
-		<< std::setw(15) << "Date"
-		<< std::setw(15) << "Reason"
+		<< std::setw(15) << CLR_YELLOW << "Key" << CLR_RESET
+		<< std::setw(10) << CLR_YELLOW << "Value" << CLR_RESET
+		<< std::setw(15) << CLR_YELLOW << "Date" << CLR_RESET
+		<< std::setw(15) << CLR_YELLOW << "Reason"
 		<< std::endl;
 
-	std::cout << std::string(40, '-') << std::endl;
+	std::cout << CLR_BLUE << std::string(50, '-') << CLR_RESET << std::endl;
 
 	for (std::map<size_t, value>::const_iterator it = data.begin(); it != data.end(); ++it) {
-		std::cout << std::left
-			<< std::setw(15) << it->first
-			<< std::setw(10) << std::fixed << std::setprecision(2) << it->second.value
-			<< std::setw(15) << std::fixed << it->second.date
-			<< std::setw(15) << error_code_to_string(it->second.reason)
-			<< std::endl;
+		if (it->first != 1) {
+			std::cout << std::left
+				<< "\t" << CLR_GOLD << it->first << CLR_RESET
+				<< "\t" << CLR_GREEN << std::fixed << std::setprecision(2) << it->second.value << CLR_RESET
+				<< "\t" << CLR_CYAN << std::fixed << it->second.date << CLR_RESET
+				<< "\t" << error_code_to_string(it->second.reason) << CLR_RESET
+				<< std::endl;
+		}
 	}
 
-	std::cout << "===================================" << std::endl;
+	std::cout << CLR_BLUE << std::string(50, '=') << CLR_RESET << std::endl;
 }
 
 std::string itoa_home(int i) {
