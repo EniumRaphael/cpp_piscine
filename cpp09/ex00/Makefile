@@ -6,7 +6,11 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
+<<<<<<< Updated upstream
 #    Updated: 2025/04/11 15:55:49 by rparodi          ###   ########.fr        #
+=======
+#    Updated: 2025/04/12 12:53:27 by rparodi          ###   ########.fr        #
+>>>>>>> Stashed changes
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +37,17 @@ CXXFLAGS += $(DEBUG)
 SRC =	BitcoinExchange.cpp \
 		main.cpp
 
+<<<<<<< Updated upstream
+=======
+INC_DIR = .
+
+CPPFLAGS = $(addprefix -I, $(INC_DIR)) -MMD -MP
+
+#  Flags to have the dependences (can be removed for correction)
+# DEBUG = -g3
+# CPPFLAGS += $(DEBUG)
+
+>>>>>>> Stashed changes
 # Objects
 OBJDIRNAME = ./build
 OBJ = $(addprefix $(OBJDIRNAME)/,$(SRC:.cpp=.o))
@@ -116,6 +131,7 @@ footer:
 		@printf '              $(GREY)The compilation is$(END) $(GOLD)finish$(END)\n               $(GREY)Have a good $(END)$(GOLD)correction !$(END)\n'
 
 clangd:
+<<<<<<< Updated upstream
 	@echo -e										\
 	"CompileFlags:\n"								\
 	"  Add:\n"										\
@@ -123,6 +139,18 @@ clangd:
 	"    - \"-I"$(shell pwd)"/includes\"\n"			\
 	"    - \"-xc++\"\n"								\
 	> .clangd
+=======
+	@printf "CompileFlags:\n" > ./.clangd
+	@printf "  Add:\n" >> ./.clangd
+	@printf "    - \"-std=c++98 -Wall -Wextra -Werror\"\n" >> ./.clangd
+	@printf "    - \"-I"$(shell pwd)"/includes\"\n" >> ./.clangd
+	@printf "    - \"-xc++\"\n" >> ./.clangd
+	@for file in $(INC_DIR); do \
+		printf "    - \"-I"$(shell pwd)"/"$$file"\"" >> .clangd; \
+	done
+	@printf "\n" >> ./.clangd
+	@printf '$(GREY) Now parsing settings is set in $(END)$(GREEN)./.clangd$(END)\n'
+>>>>>>> Stashed changes
 
 #	Phony
 .PHONY: all clean fclean re get_db clangd

@@ -6,7 +6,11 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2025/04/11 16:06:02 by rparodi          ###   ########.fr       */
+=======
+/*   Updated: 2025/04/12 15:58:47 by rparodi          ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +40,59 @@ value convertValue (enum error_code error, float value) {
 	return to_return;
 }
 
+<<<<<<< Updated upstream
 bool is_valid_format_date(std::string str)  {
     regex_t regex;
+=======
+std::string error_code_to_string(enum error_code code) {
+	switch (code) {
+		case NO_ERROR:   return "NO_ERROR";
+		case NEGATIVE:   return "NEGATIVE";
+		case NO_FORMAT:  return "NO_FORMAT";
+		case NO_LIMIT:   return "NO_LIMIT";
+		case TOO_LARGE:  return "TOO_LARGE";
+		default:         return "UNKNOWN";
+	}
+}
 
-	int ret = regcomp(&regex, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", REG_EXTENDED);
+void debug_print_map(const std::map<size_t, std::map<std::string, value> >& data) {
+	std::cout << "========== Debug: Parsed Entries ==========" << std::endl;
+
+	// En-têtes de colonnes
+	std::cout << std::left
+		<< std::setw(8)  << "Line"
+		<< std::setw(15) << "Date"
+		<< std::setw(10) << "Value"
+		<< std::setw(15) << "Reason"
+		<< std::endl;
+
+	std::cout << std::string(48, '-') << std::endl;
+
+	// Parcours de la map extérieure (par ligne)
+	for (size_t i = 0; i < data.size(); ++i) {
+		size_t line = it->first;
+		const std::map<std::string, value>& inner = it[line]->second;
+		const value& val = inner_it->second;
+
+		std::cout << std::left
+			<< std::setw(8)  << line
+			<< std::setw(15) << date
+			<< std::setw(10) << std::fixed << std::setprecision(2) << val.value
+			<< std::setw(15) << error_code_to_string(val.reason)
+			<< std::endl;
+		
+	}
+
+	std::cout << "===========================================" << std::endl;
+}
+
+>>>>>>> Stashed changes
+
+
+bool is_valid_format_date(std::string str)  {
+	regex_t regex;
+
+	int ret = regcomp(&regex, "^[0-9]{4}-[0-9]-[0-9]{2}$", REG_EXTENDED);
 	if (ret)
 		return false;
 
@@ -122,13 +175,26 @@ std::map<std::string, value>parse_input(std::string name) {
 		std::size_t limit = tmpLine.find(" | ");
 		if (limit == std::string::npos) {
 			tmpError = NO_FORMAT;
+<<<<<<< Updated upstream
+=======
+			to_ret[line].insert(std::make_pair(tmpLine, convertValue(line, tmpError, tmpValue)));
+			continue;
+>>>>>>> Stashed changes
 		} else {
 			tmpDate = check_date(tmpLine.substr(0, limit), &tmpError);
 			if (tmpError == NO_ERROR) {
 				tmpValue = check_value(tmpLine.substr(limit + 3).c_str(), &tmpError);
 			}
 		}
+<<<<<<< Updated upstream
 		to_ret.insert(std::pair<std::string, value>(tmpDate, convertValue(tmpError, tmpValue)));
+=======
+		if (tmpError != NO_ERROR)
+			to_ret[line].insert(std::make_pair(itoa_home(line), convertValue(line, tmpError, tmpValue)));
+		else
+			to_ret[line].insert(std::make_pair(tmpLine, convertValue(line, tmpError, tmpValue)));
+		line++;
+>>>>>>> Stashed changes
 	}
 	return to_ret;
 }
