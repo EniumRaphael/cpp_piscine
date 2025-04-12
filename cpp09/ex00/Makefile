@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/04/12 16:01:22 by rparodi          ###   ########.fr        #
+#    Updated: 2025/04/12 22:51:15 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,8 @@ RM = rm -rf
 
 # Flags
 #  Mandatory flags for 42
-CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -I./includes/
+CXXFLAGS = -Werror -Wextra -Wall -std=c++98
 #  Flags to have the dependences (can be removed for correction)
-CXXFLAGS += -MMD
 #  Flags to have the debug (can be removed for correction)
 DEBUG = -g3
 # DEBUG += -fsanitize=address
@@ -59,7 +58,7 @@ all: header $(NAME) footer
 
 get_db:
 	@rm -rf ./cpp_09.tgz ./cpp_09 ./data.csv &> /dev/null
-	@wget https://cdn.intra.42.fr/document/document/32672/cpp_09.tgz &> /dev/null
+	@wget https://cdn.intra.42.fr/document/document/33121/cpp_09.tgz &> /dev/null
 	@tar -xvf cpp_09.tgz &> /dev/null
 	@cp ./cpp_09/data.csv . &> /dev/null
 	@rm -rf ./cpp_09.tgz ./cpp_09 &> /dev/null
@@ -126,9 +125,9 @@ footer:
 clangd:
 	@printf "CompileFlags:\n" > ./.clangd
 	@printf "  Add:\n" >> ./.clangd
-	@printf "    - \"-std=c++98 -Wall -Wextra -Werror\"\n" >> ./.clangd
-	@printf "    - \"-I"$(shell pwd)"/includes\"\n" >> ./.clangd
 	@printf "    - \"-xc++\"\n" >> ./.clangd
+	@printf "    - \"$(CXXFLAGS)\"\n" >> ./.clangd
+	@printf "    - \"-I"$(shell pwd)"/\"\n" >> .clangd;
 	@for file in $(INC_DIR); do \
 		printf "    - \"-I"$(shell pwd)"/"$$file"\"" >> .clangd; \
 	done
