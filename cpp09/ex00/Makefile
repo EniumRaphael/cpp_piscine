@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/04/12 22:51:15 by rparodi          ###   ########.fr        #
+#    Updated: 2025/04/12 22:54:38 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ CXXFLAGS += $(DEBUG)
 SRC =	BitcoinExchange.cpp \
 		main.cpp
 
-INC_DIR = .
+INC_DIR =
 
 CPPFLAGS = $(addprefix -I, $(INC_DIR)) -MMD -MP
 
