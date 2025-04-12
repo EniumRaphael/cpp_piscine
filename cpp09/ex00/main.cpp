@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/12 22:30:40 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/12 22:37:50 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ std::string itoa_home(int i) {
 	return oss.str();
 }
 
-
 bool is_valid_format_date(std::string str)  {
 	regex_t regex;
 
@@ -135,9 +134,9 @@ std::string check_date(std::string name, enum error_code *error_code) {
 
 std::string nb_len(std::string nb) {
 	size_t first_non_zero = nb.find_first_not_of('0');
-		if (first_non_zero == std::string::npos)
-			return "0";
-		return nb.substr(first_non_zero);
+	if (first_non_zero == std::string::npos)
+		return "0";
+	return nb.substr(first_non_zero);
 }
 
 float	check_value(std::string value, enum error_code *error_code) {
