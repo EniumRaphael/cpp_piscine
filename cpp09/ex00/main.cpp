@@ -6,17 +6,15 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2025/04/11 16:06:02 by rparodi          ###   ########.fr       */
-=======
-/*   Updated: 2025/04/12 15:58:47 by rparodi          ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2025/04/12 18:07:03 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <cmath>
 #include <regex.h>
+#include <iomanip>
+#include <sstream>
 
 enum error_code {
 	NO_ERROR = 0,
@@ -31,68 +29,72 @@ enum error_code {
 typedef struct s_value {
 	enum error_code reason;
 	float value;
+	std::string date;
 } value;
 
-value convertValue (enum error_code error, float value) {
+value convertValue (enum error_code error, float value, std::string date) {
 	s_value to_return;
 	to_return.reason = error;
 	to_return.value = value;
+	to_return.date = date;
 	return to_return;
 }
 
-<<<<<<< Updated upstream
-bool is_valid_format_date(std::string str)  {
-    regex_t regex;
-=======
 std::string error_code_to_string(enum error_code code) {
 	switch (code) {
-		case NO_ERROR:   return "NO_ERROR";
-		case NEGATIVE:   return "NEGATIVE";
-		case NO_FORMAT:  return "NO_FORMAT";
-		case NO_LIMIT:   return "NO_LIMIT";
-		case TOO_LARGE:  return "TOO_LARGE";
-		default:         return "UNKNOWN";
+		case NO_ERROR:
+			return "NO_ERROR";
+		case NEGATIVE:
+			return "NEGATIVE";
+		case NO_FORMAT:
+			return "NO_FORMAT";
+		case NO_DATE:
+			return "NO_DATE";
+		case NO_LIMIT:
+			return "NO_LIMIT";
+		case NO_FLOAT:
+			return "NO_FLOAT";
+		case TOO_LARGE:
+			return "TOO_LARGE";
+		default:
+			return "UNKNOWN";
 	}
 }
 
-void debug_print_map(const std::map<size_t, std::map<std::string, value> >& data) {
-	std::cout << "========== Debug: Parsed Entries ==========" << std::endl;
-
-	// En-têtes de colonnes
+void debug_print_map(const std::map<size_t, value>& data) {
+	std::cout << "===== Debug: Contents of map =====" << std::endl;
 	std::cout << std::left
-		<< std::setw(8)  << "Line"
-		<< std::setw(15) << "Date"
+		<< std::setw(15) << "Key"
 		<< std::setw(10) << "Value"
+		<< std::setw(15) << "Date"
 		<< std::setw(15) << "Reason"
 		<< std::endl;
 
-	std::cout << std::string(48, '-') << std::endl;
+	std::cout << std::string(40, '-') << std::endl;
 
-	// Parcours de la map extérieure (par ligne)
-	for (size_t i = 0; i < data.size(); ++i) {
-		size_t line = it->first;
-		const std::map<std::string, value>& inner = it[line]->second;
-		const value& val = inner_it->second;
-
+	for (std::map<size_t, value>::const_iterator it = data.begin(); it != data.end(); ++it) {
 		std::cout << std::left
-			<< std::setw(8)  << line
-			<< std::setw(15) << date
-			<< std::setw(10) << std::fixed << std::setprecision(2) << val.value
-			<< std::setw(15) << error_code_to_string(val.reason)
+			<< std::setw(15) << it->first
+			<< std::setw(10) << std::fixed << std::setprecision(2) << it->second.value
+			<< std::setw(15) << std::fixed << it->second.date
+			<< std::setw(15) << error_code_to_string(it->second.reason)
 			<< std::endl;
-		
 	}
 
-	std::cout << "===========================================" << std::endl;
+	std::cout << "===================================" << std::endl;
 }
 
->>>>>>> Stashed changes
+std::string itoa_home(int i) {
+	std::ostringstream oss;
+	oss << "0000" << i;
+	return oss.str();
+}
 
 
 bool is_valid_format_date(std::string str)  {
 	regex_t regex;
 
-	int ret = regcomp(&regex, "^[0-9]{4}-[0-9]-[0-9]{2}$", REG_EXTENDED);
+	int ret = regcomp(&regex, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", REG_EXTENDED);
 	if (ret)
 		return false;
 
@@ -159,42 +161,32 @@ float	check_value(std::string value, enum error_code *error_code) {
 	return (atof(value.c_str()));
 }
 
-std::map<std::string, value>parse_input(std::string name) {
+std::map<size_t, value>parse_input(std::string name) {
 	enum error_code tmpError;
 
 	std::ifstream file(name.c_str());
 
-	std::map<std::string, value> to_ret;
+	std::map<size_t, value> to_ret;
 
 	std::string tmpLine;
 	std::string tmpDate;
 	float tmpValue = 0; 
+	size_t line = 0;
 
 	while (std::getline(file, tmpLine)) {
+		line++;
 		tmpError = NO_ERROR;
+		tmpDate.clear();
+		tmpValue = 0;
 		std::size_t limit = tmpLine.find(" | ");
 		if (limit == std::string::npos) {
 			tmpError = NO_FORMAT;
-<<<<<<< Updated upstream
-=======
-			to_ret[line].insert(std::make_pair(tmpLine, convertValue(line, tmpError, tmpValue)));
-			continue;
->>>>>>> Stashed changes
+			to_ret.insert(std::make_pair(line, convertValue(tmpError, tmpValue, tmpLine)));
 		} else {
 			tmpDate = check_date(tmpLine.substr(0, limit), &tmpError);
-			if (tmpError == NO_ERROR) {
-				tmpValue = check_value(tmpLine.substr(limit + 3).c_str(), &tmpError);
-			}
+			tmpValue = check_value(tmpLine.substr(limit + 3).c_str(), &tmpError);
+			to_ret.insert(std::make_pair(line, convertValue(tmpError, tmpValue, tmpDate)));
 		}
-<<<<<<< Updated upstream
-		to_ret.insert(std::pair<std::string, value>(tmpDate, convertValue(tmpError, tmpValue)));
-=======
-		if (tmpError != NO_ERROR)
-			to_ret[line].insert(std::make_pair(itoa_home(line), convertValue(line, tmpError, tmpValue)));
-		else
-			to_ret[line].insert(std::make_pair(tmpLine, convertValue(line, tmpError, tmpValue)));
-		line++;
->>>>>>> Stashed changes
 	}
 	return to_ret;
 }
@@ -220,5 +212,6 @@ int	main(int argc, char *argv[]) {
 		std::cerr << CLR_RED << "The program have to read on the file `data.csv`" << CLR_RESET << std::endl;
 		exit( 1);
 	}
-	std::map<std::string, value> user_db = parse_input(argv[1]);
+	std::map<size_t, value> user_db = parse_input(argv[1]);
+	debug_print_map(user_db);
 }
