@@ -133,6 +133,13 @@ std::string check_date(std::string name, enum error_code *error_code) {
 	return (name);
 }
 
+std::string nb_len(std::string nb) {
+	size_t first_non_zero = nb.find_first_not_of('0');
+		if (first_non_zero == std::string::npos)
+			return "0";
+		return nb.substr(first_non_zero);
+}
+
 float	check_value(std::string value, enum error_code *error_code) {
 	bool has_dot = false;
 	if (value.at(0) == '-') {
@@ -153,7 +160,7 @@ float	check_value(std::string value, enum error_code *error_code) {
 			return 0;
 		}
 	}
-	if (value.size() >= 4 || atof(value.c_str()) > 1000) {
+	if (nb_len(value).size() >= 4 || atof(value.c_str()) > 1000) {
 		*error_code = TOO_LARGE;
 		return 0;
 	}
