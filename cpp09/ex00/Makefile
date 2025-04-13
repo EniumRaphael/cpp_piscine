@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/04/12 22:54:38 by rparodi          ###   ########.fr        #
+#    Updated: 2025/04/13 15:38:33 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,7 +126,9 @@ clangd:
 	@printf "CompileFlags:\n" > ./.clangd
 	@printf "  Add:\n" >> ./.clangd
 	@printf "    - \"-xc++\"\n" >> ./.clangd
-	@printf "    - \"$(CXXFLAGS)\"\n" >> ./.clangd
+	@for FLAG in $(CXXFLAGS); do \
+		printf "    - \"$$FLAG\"\n" >> ./.clangd; \
+	done
 	@printf "    - \"-I"$(shell pwd)"/\"\n" >> .clangd;
 	@for file in $(INC_DIR); do \
 		printf "    - \"-I"$(shell pwd)"/"$$file"\"" >> .clangd; \
