@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/13 17:35:55 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/13 17:41:41 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,16 +179,16 @@ float	check_value(bool more_than_1000, std::string value, enum error_code *error
 }
 
 std::map<size_t, value>parse_input(std::string name) {
-	enum error_code tmpError;
+	enum error_code tmpError = NO_ERROR;
 
 	std::ifstream file(name.c_str());
 
 	std::map<size_t, value> to_ret;
+	size_t line = 0;
 
 	std::string tmpLine;
 	std::string tmpDate;
 	float tmpValue = 0; 
-	size_t line = 0;
 
 	std::getline(file, tmpLine);
 	if (tmpLine != "date | value") {
@@ -259,12 +259,12 @@ void print_result(std::map<size_t, value> input, std::map<std::string, float> db
 }
 
 std::map<std::string, float> get_db() {
-	enum error_code tmpError;
+	enum error_code tmpError = NO_ERROR;
 	std::map<std::string, float> to_ret;
 
 	std::ifstream file("data.csv");
-	std::string tmpLine;
-	std::string tmpDate;
+	std::string tmpLine = "";
+	std::string tmpDate = "";
 	std::getline(file, tmpLine);
 	float tmpValue = 0;
 
