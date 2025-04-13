@@ -6,15 +6,11 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/12 23:22:11 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/13 17:32:49 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <cmath>
-#include <regex.h>
-#include <iomanip>
-#include <sstream>
 
 enum error_code {
 	NO_ERROR = 0,
@@ -82,7 +78,7 @@ void _debug_print_input(const std::map<size_t, value>& data) {
 		<< "\t" << CLR_YELLOW << "Key" << CLR_RESET
 		<< "\t" << CLR_YELLOW << "Value" << CLR_RESET
 		<< "\t   " << CLR_YELLOW << "Date" << CLR_RESET
-		<< "\t\t" << CLR_YELLOW << "Reason"
+		<< "\t\t" << CLR_YELLOW << "Reason"<< CLR_RESET
 		<< std::endl;
 
 	std::cout << CLR_BLUE << std::string(50, '-') << CLR_RESET << std::endl;
@@ -155,7 +151,7 @@ std::string nb_len(std::string nb) {
 	return nb.substr(first_non_zero);
 }
 
-float	check_value(std::string value, enum error_code *error_code) {
+float	check_value(bool more_than_1000, std::string value, enum error_code *error_code) {
 	bool has_dot = false;
 	if (value.at(0) == '-') {
 		*error_code = NEGATIVE;
@@ -175,7 +171,7 @@ float	check_value(std::string value, enum error_code *error_code) {
 			return 0;
 		}
 	}
-	if (nb_len(value).size() >= 4 || atof(value.c_str()) > 1000) {
+	if (more_than_1000 == false && (nb_len(value).size() >= 4 || atof(value.c_str()) > 1000)) {
 		*error_code = TOO_LARGE;
 		return 0;
 	}
@@ -190,11 +186,15 @@ std::map<size_t, value>parse_input(std::string name) {
 	std::map<size_t, value> to_ret;
 
 	std::string tmpLine;
-	std::getline(file, tmpLine);
 	std::string tmpDate;
 	float tmpValue = 0; 
 	size_t line = 0;
 
+	std::getline(file, tmpLine);
+	if (tmpLine != "date | value") {
+		std::cerr << CLR_RED << "The first line of the file have to be `date | value`" << CLR_RESET << std::endl;
+		exit(1);
+	}
 	while (std::getline(file, tmpLine)) {
 		tmpError = NO_ERROR;
 		tmpDate.clear();
@@ -205,12 +205,57 @@ std::map<size_t, value>parse_input(std::string name) {
 			to_ret.insert(std::make_pair(line, convertValue(tmpError, tmpValue, tmpLine)));
 		} else {
 			tmpDate = check_date(tmpLine.substr(0, limit), &tmpError);
-			tmpValue = check_value(tmpLine.substr(limit + 3).c_str(), &tmpError);
+			tmpValue = check_value(false, tmpLine.substr(limit + 3).c_str(), &tmpError);
 			to_ret.insert(std::make_pair(line, convertValue(tmpError, tmpValue, tmpDate)));
 		}
 		line++;
 	}
 	return to_ret;
+}
+
+void print_result(std::map<size_t, value> input, std::map<std::string, float> db) {
+	std::map<size_t, value>::iterator it_input = input.begin();
+	std::map<std::string, float>::iterator it_db = db.begin();
+
+	while (it_input != input.end()) {
+		if (it_input->second.reason == NO_ERROR) {
+			while (it_db != db.end() && it_input->second.date > it_db->first)
+				it_db++;
+			if (it_db == db.begin()) {
+				it_db--;
+			}
+			if (it_db == db.end()) {
+				std::cerr << CLR_MAGENTA << it_input->second.date << CLR_RED << " => no data found" << CLR_RESET << std::endl;
+			} else {
+				std::cout << it_input->second.date << " => " << it_input->second.value << " = " << it_input->second.value * it_db->second << std::endl;
+			}
+		}
+		else {
+			switch (it_input->second.reason) {
+				case NEGATIVE:
+					std::cerr << CLR_MAGENTA << it_input->second.date << CLR_RED << " => is negative" << CLR_RESET << std::endl;
+					break;
+				case NO_FORMAT:
+					std::cerr << CLR_MAGENTA << it_input->second.date << CLR_RED << " => bad format" << CLR_RESET << std::endl;
+					break;
+				case NO_DATE:
+					std::cerr << CLR_MAGENTA << it_input->second.date << CLR_RED << " => bad date" << CLR_RESET << std::endl;
+					break;
+				case NO_FLOAT:
+					std::cerr << CLR_MAGENTA << it_input->second.date << CLR_RED << " => bad value" << CLR_RESET << std::endl;
+					break;
+				case NO_LIMIT:
+					std::cerr << CLR_MAGENTA << it_input->second.date << CLR_RED << " => bad input" << CLR_RESET << std::endl;
+					break;
+				case TOO_LARGE:
+					std::cerr << CLR_MAGENTA << it_input->second.date << CLR_RED << " => value too large" << CLR_RESET << std::endl;
+					break;
+				default:
+					break;
+			}
+		}
+		it_input++;
+	}
 }
 
 std::map<std::string, float> get_db() {
@@ -230,13 +275,15 @@ std::map<std::string, float> get_db() {
 
 		if (limit != std::string::npos) {
 			tmpDate = check_date(tmpLine.substr(0, limit), &tmpError);
-			tmpValue = check_value(tmpLine.substr(limit + 1).c_str(), &tmpError);
+			tmpValue = check_value(true, tmpLine.substr(limit + 1).c_str(), &tmpError);
 			if (tmpError != NEGATIVE)
 				to_ret.insert(std::make_pair(tmpDate, tmpValue));
 		}
 	}
 	return to_ret;
 }
+
+
 
 int	main(int argc, char *argv[]) {
 	if (argc != 2) {
@@ -249,7 +296,7 @@ int	main(int argc, char *argv[]) {
 	}
 	if (access(argv[1], R_OK)) {
 		std::cerr << CLR_RED << "The file given in arguments have to be readable by the owner" << CLR_RESET << std::endl;
-		exit( 1);
+		exit(1);
 	}
 	if (access("data.csv", F_OK)) {
 		std::cerr << CLR_RED << "The file `data.csv` have to exist (to take it from the intra `make get_db`)" << CLR_RESET << std::endl;
@@ -257,10 +304,11 @@ int	main(int argc, char *argv[]) {
 	}
 	if (access("data.csv", R_OK)) {
 		std::cerr << CLR_RED << "The program have to read on the file `data.csv`" << CLR_RESET << std::endl;
-		exit( 1);
+		exit(1);
 	}
 	std::map<size_t, value> user_db = parse_input(argv[1]);
 	_debug_print_input(user_db);
 	std::map<std::string, float> value_db = get_db();
-	_debug_print_db(value_db);
+	// _debug_print_db(value_db);
+	print_result(user_db, value_db);
 }
