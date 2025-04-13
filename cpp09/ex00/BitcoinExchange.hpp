@@ -6,16 +6,20 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:18:18 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/11 12:36:11 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/13 16:19:47 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <cmath>
 #include <cstdlib>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <map>
+#include <regex.h>
+#include <sstream>
 #include <string>
 #include <unistd.h>
 
