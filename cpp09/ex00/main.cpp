@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/13 17:32:49 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/13 17:35:55 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,7 +307,7 @@ int	main(int argc, char *argv[]) {
 		exit(1);
 	}
 	std::map<size_t, value> user_db = parse_input(argv[1]);
-	_debug_print_input(user_db);
+	 // _debug_print_input(user_db);
 	std::map<std::string, float> value_db = get_db();
 	// _debug_print_db(value_db);
 	print_result(user_db, value_db);
