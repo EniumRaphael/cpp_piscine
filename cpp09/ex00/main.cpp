@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/13 17:41:41 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/15 11:56:31 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,7 @@ std::map<size_t, value>parse_input(std::string name) {
 		}
 		line++;
 	}
+	file.close();
 	return to_ret;
 }
 
@@ -280,6 +281,7 @@ std::map<std::string, float> get_db() {
 				to_ret.insert(std::make_pair(tmpDate, tmpValue));
 		}
 	}
+	file.close();
 	return to_ret;
 }
 
@@ -311,4 +313,5 @@ int	main(int argc, char *argv[]) {
 	std::map<std::string, float> value_db = get_db();
 	// _debug_print_db(value_db);
 	print_result(user_db, value_db);
+
 }
