@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/15 11:56:31 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/16 18:19:29 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,6 +267,10 @@ std::map<std::string, float> get_db() {
 	std::string tmpLine = "";
 	std::string tmpDate = "";
 	std::getline(file, tmpLine);
+	if (tmpLine != "date,exchange_rate") {
+		std::cerr << CLR_RED << "The first line of the file have to be `date,exchange_rate`" << CLR_RESET << std::endl;
+		exit(1);
+	}
 	float tmpValue = 0;
 
 	while (std::getline(file, tmpLine)) {
