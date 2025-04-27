@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 13:03:08 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/27 15:39:50 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/04/27 17:13:10 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,18 @@
 #define CLR_WHITE "\033[0;37m"
 #define CLR_GOLD "\033[38;5;220m"
 #define CLR_GREY "\033[38;5;240m"
+
+enum e_op
+{
+	NUM = 0,
+	ADD,
+	SUB,
+	MUL,
+	DIV
+};
+
+typedef struct s_tok
+{
+	e_op type;
+	int value;
+}	tok;
