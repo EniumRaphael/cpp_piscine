@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/05/01 14:45:09 by rparodi          ###   ########.fr        #
+#    Updated: 2025/05/01 15:58:53 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,45 +75,18 @@ re: header fclean all
 $(NAME): $(OBJ)
 	@mkdir -p $(OBJDIRNAME)
 	@printf '$(GREY) Creating $(END)$(GREEN)$(OBJDIRNAME)$(END)\n'
-	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(CPPFLAGS) -o $(NAME) $(OBJ)
 
 # Creating the objects
 $(OBJDIRNAME)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@printf '$(GREY) Compiling $(END)$(GREEN)$<$(END)\n'
-	@$(CXX) $(CXXFLAGS) -o $@ -c $<
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 test:
-	@printf '$(GREY) Testing with $(END)$(GOLD)./RPN ""$(END)\n'
-	@./$(NAME) ""
-	@printf '\n'
-	@printf '$(GREY) MemCheck with $(END)$(GOLD)./RPN ""$(END)\n'
-	@valgrind ./$(NAME) "" 2> /tmp/RPN_test
-	@cat /tmp/RPN_test | rg --color=always "ERROR SUMMARY" -A 10
-	@printf '$(GREY) Testing with $(END)$(GOLD)./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"$(END)\n'
-	@./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
-	@printf '\n'
-	@printf '$(GREY) MemCheck with $(END)$(GOLD)./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"$(END)\n'
-	@valgrind ./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +" 2> /tmp/RPN_test
-	@cat /tmp/RPN_test | rg --color=always "ERROR SUMMARY" -A 10
-	@printf '$(GREY) Testing with $(END)$(GOLD)./RPN "7 7 * 7 -"$(END)\n'
-	@./$(NAME) "7 7 * 7 -"
-	@printf '\n'
-	@printf '$(GREY) MemCheck with $(END)$(GOLD)./RPN "7 7 * 7 -"$(END)\n'
-	@valgrind ./$(NAME) "7 7 * 7 -" 2> /tmp/RPN_test
-	@cat /tmp/RPN_test | rg --color=always "ERROR SUMMARY" -A 10
-	@printf '$(GREY) Testing with $(END)$(GOLD)./RPN "1 2 * 2 / 2 * 2 4 - +"$(END)\n'
-	@./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
-	@printf '\n'
-	@printf '$(GREY) MemCheck with $(END)$(GOLD)./RPN "1 2 * 2 / 2 * 2 4 - +"$(END)\n'
-	@valgrind ./$(NAME) "1 2 * 2 / 2 * 2 4 - +" 2> /tmp/RPN_test
-	@cat /tmp/RPN_test | rg --color=always "ERROR SUMMARY" -A 10
-	@printf '$(GREY) Testing with $(END)$(GOLD)./RPN "(1 + 1)"$(END)\n'
-	@./$(NAME) "(1 + 1)"
-	@printf '\n'
-	@printf '$(GREY) MemCheck with $(END)$(GOLD)./RPN "(1 + 1)"$(END)\n'
-	@valgrind ./$(NAME) "(1 + 1)" 2> /tmp/RPN_test
-	@cat /tmp/RPN_test | rg --color=always "ERROR SUMMARY" -A 10
+
+debug: CPPFLAGS += -D DEBUG=1
+debug: re
 
 #	Header
 header:
