@@ -6,13 +6,11 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:45:40 by rparodi           #+#    #+#             */
-/*   Updated: 2025/05/02 16:06:17 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/05/02 16:12:03 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <cctype>
-#include <iostream>
 
 int check_input(int argc, char **argv) {
 	for (size_t i = 1; i < static_cast<size_t>(argc); i++) {

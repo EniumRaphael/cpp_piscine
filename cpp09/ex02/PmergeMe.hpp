@@ -6,12 +6,14 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:45:25 by rparodi           #+#    #+#             */
-/*   Updated: 2025/05/01 16:06:02 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/05/02 16:12:02 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <iostream>
+#include <cctype>
 #include <iostream>
 
 #define CLR_RESET "\033[0m"
