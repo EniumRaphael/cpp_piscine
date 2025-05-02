@@ -4,9 +4,8 @@
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/05/02 15:21:01 by rparodi          ###   ########.fr        #
+#    Updated: 2025/05/02 15:40:00 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,10 +82,11 @@ $(OBJDIRNAME)/%.o: %.cpp
 	@printf '$(GREY) Compiling $(END)$(GREEN)$<$(END)\n'
 	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ -c $<
 
-test:
-
 debug: CPPFLAGS += -D DEBUG=1
 debug: re
+
+test: debug
+	@./$(NAME) $(shell shuf -i 1-100000 -n 3000 | tr "\n" " ")
 
 #	Header
 header:
@@ -134,5 +134,5 @@ clangd:
 	@printf '$(GREY) Now parsing settings is set in $(END)$(GREEN)./.clangd$(END)\n'
 
 #	Phony
-.PHONY: all clean fclean re get_db clangd
+.PHONY: all clean fclean re clangd debug test
 -include	${OBJ:.o=.d}
