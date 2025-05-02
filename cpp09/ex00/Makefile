@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/04/13 15:38:33 by rparodi          ###   ########.fr        #
+#    Updated: 2025/05/02 15:21:09 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ RM = rm -rf
 CXXFLAGS = -Werror -Wextra -Wall -std=c++98
 #  Flags to have the dependences (can be removed for correction)
 #  Flags to have the debug (can be removed for correction)
-DEBUG = -g3
+# DEBUG = -g3
 # DEBUG += -fsanitize=address
 CXXFLAGS += $(DEBUG)
 
@@ -35,10 +35,6 @@ SRC =	BitcoinExchange.cpp \
 INC_DIR =
 
 CPPFLAGS = $(addprefix -I, $(INC_DIR)) -MMD -MP
-
-#  Flags to have the dependences (can be removed for correction)
-# DEBUG = -g3
-# CPPFLAGS += $(DEBUG)
 
 # Objects
 OBJDIRNAME = ./build
@@ -83,13 +79,13 @@ re: header fclean all
 $(NAME): $(OBJ)
 	@mkdir -p $(OBJDIRNAME)
 	@printf '$(GREY) Creating $(END)$(GREEN)$(OBJDIRNAME)$(END)\n'
-	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $(NAME) $(OBJ)
 
 # Creating the objects
 $(OBJDIRNAME)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@printf '$(GREY) Compiling $(END)$(GREEN)$<$(END)\n'
-	@$(CXX) $(CXXFLAGS) -o $@ -c $<
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 #	Header
 header:
@@ -106,6 +102,9 @@ header:
 		@printf '$(GOLD)              ******  $(END)\n'
 		@printf '$(GOLD)              ******  $(END)\n'
 		@printf '$(GREY)                                      Made by rparodi$(END)\n\n'
+
+debug: CPPFLAGS += -D DEBUG=1
+debug: re
 
 #	Footer
 footer:

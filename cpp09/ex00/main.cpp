@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/16 18:19:29 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/05/02 15:22:16 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,9 +289,9 @@ std::map<std::string, float> get_db() {
 	return to_ret;
 }
 
-
-
 int	main(int argc, char *argv[]) {
+	if (DEBUG)
+		std::cout << CLR_MAGENTA << "Warning: DEBUG MODE is enable" << CLR_RESET << std::endl;
 	if (argc != 2) {
 		std::cerr << CLR_RED << "Usage: " << argv[0] << " <filename>" << CLR_RESET << std::endl;
 		exit(1);
@@ -313,9 +313,11 @@ int	main(int argc, char *argv[]) {
 		exit(1);
 	}
 	std::map<size_t, value> user_db = parse_input(argv[1]);
-	 // _debug_print_input(user_db);
+	if (DEBUG)
+		 _debug_print_input(user_db);
 	std::map<std::string, float> value_db = get_db();
-	// _debug_print_db(value_db);
+	if (DEBUG)
+		_debug_print_db(value_db);
 	print_result(user_db, value_db);
 
 }

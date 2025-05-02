@@ -6,11 +6,15 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:18:18 by rparodi           #+#    #+#             */
-/*   Updated: 2025/04/13 16:19:47 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/05/02 15:19:32 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#ifndef DEBUG
+#define DEBUG 0
+#endif
 
 #include <cmath>
 #include <cstdlib>
