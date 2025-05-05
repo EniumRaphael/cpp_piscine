@@ -1,5 +1,9 @@
 .clangd
+.direnv/
+.DS_Store
 build/
+flake.lock
+
 *.pdf
 *.d
 *.o
@@ -8,8 +12,8 @@ build/
 *_shrubbery
 *.csv
 *.tgz
+
 phonebook
-.DS_Store
 megaphone
 job_of_dream
 BraiiiiiiinnnzzzZ
