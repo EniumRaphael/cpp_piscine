@@ -23,12 +23,9 @@
 					);
 					
 					shellHook = ''
-						export DIRENV_LOG_FORMAT=""
 						export NIX_SHOW_STATS=0
 						export NIX_HIDE_STATS=1
 						export CXX=clang++
-						export CC=clang
-						export CFLAGS="-std=c89 -Wall -Werror -Wextra"
 						export CXXFLAGS="-std=cpp98 -Wall -Werror -Wextra"
 						printf "\n\033[0;90mCPP env loaded for: \033[38;5;220m${system}\033[0m\n"
 					'';
