@@ -6,15 +6,28 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:45:25 by rparodi           #+#    #+#             */
-/*   Updated: 2025/05/02 16:12:02 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/05/07 11:58:03 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
 #include <cctype>
+#include <cerrno>
+#include <cstdlib>
 #include <iostream>
+#include <vector>
+
+class PmergeMe {
+	private:
+		std::vector<int> _vec;
+	public:
+		PmergeMe();
+		PmergeMe(const PmergeMe &copy);
+		PmergeMe& operator=(const PmergeMe &assign);
+		PmergeMe(std::vector<int> vec);
+		~PmergeMe();
+};
 
 #define CLR_RESET "\033[0m"
 
