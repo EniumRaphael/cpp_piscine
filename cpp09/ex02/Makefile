@@ -88,6 +88,9 @@ debug: re
 test: debug
 	@./$(NAME) $(shell shuf -i 1-100000 -n 3000 | tr "\n" " ")
 
+run: re
+	@./$(NAME) $(shell shuf -i 1-100000 -n 3000 | tr "\n" " ")
+
 #	Header
 header:
 		@clear
