@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/04/27 18:52:30 by rparodi          ###   ########.fr        #
+#    Updated: 2025/05/17 14:45:22 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ $(OBJDIRNAME)/%.o: %.cpp
 	@printf '$(GREY) Compiling $(END)$(GREEN)$<$(END)\n'
 	@$(CXX) $(CXXFLAGS) -o $@ -c $<
 
-test:
+test: re
 	@printf '$(GREY) Testing with $(END)$(GOLD)./RPN ""$(END)\n'
 	@./$(NAME) ""
 	@printf '\n'
@@ -109,12 +109,8 @@ test:
 	@valgrind ./$(NAME) "1 2 * 2 / 2 * 2 4 - +" 2> /tmp/RPN_test
 	@cat /tmp/RPN_test | rg --color=always "ERROR SUMMARY" -A 10
 	@printf '$(GREY) Testing with $(END)$(GOLD)./RPN "(1 + 1)"$(END)\n'
-	@./$(NAME) "(1 + 1)"
-	@printf '\n'
-	@printf '$(GREY) MemCheck with $(END)$(GOLD)./RPN "(1 + 1)"$(END)\n'
-	@valgrind ./$(NAME) "(1 + 1)" 2> /tmp/RPN_test
-	@cat /tmp/RPN_test | rg --color=always "ERROR SUMMARY" -A 10
 
+run: test
 #	Header
 header:
 		@clear
