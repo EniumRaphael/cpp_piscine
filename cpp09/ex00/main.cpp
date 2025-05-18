@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/05/02 15:22:16 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/05/18 21:35:25 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ std::string check_date(std::string name, enum error_code *error_code) {
 			std::string month_30[] = {"04", "06", "09", "11"};
 			for (int i = 0; i < 4; i++) {
 				if (month == month_30[i] && day > "30") {
+					*error_code = NO_DATE;
+				} else if (day > "31") {
 					*error_code = NO_DATE;
 				}
 			}
