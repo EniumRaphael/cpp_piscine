@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/06/05 18:48:32 by rparodi          ###   ########.fr        #
+#    Updated: 2025/06/05 19:09:44 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,9 @@ fclean: clean
 # Restart (make re)
 re: header fclean all
 
+run: all
+	@./$(NAME) ./input.txt
+
 # Dependences for all
 $(NAME): $(OBJ)
 	@mkdir -p $(OBJDIRNAME)
@@ -114,7 +117,7 @@ header:
 		@printf '$(GOLD)              ******  $(END)\n'
 		@printf '$(GREY)                                      Made by rparodi$(END)\n\n'
 
-debug: CPPFLAGS += -D DEBUG=1
+debug: CPPFLAGS += -D DEBUG=1 -g
 debug: re
 
 #	Footer
@@ -147,5 +150,5 @@ clangd:
 	@printf '$(GREY) Now parsing settings is set in $(END)$(GREEN)./.clangd$(END)\n'
 
 #	Phony
-.PHONY: all clean fclean re get_db clangd
+.PHONY: all clean fclean re get_db clangd run
 -include	${OBJ:.o=.d}
