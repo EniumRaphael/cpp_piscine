@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/05/18 21:35:25 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/06/05 19:30:36 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,10 @@ std::string check_date(std::string name, enum error_code *error_code) {
 		return (name);
 	}
 	std::string day = name.substr(8, 2);
+	if (year < "2009" || (year == "2009" && month <= "01" && day < "02")) {
+		*error_code = NO_DATE;
+		return (name);
+	}
 	if (day > "28") {
 		if (month == "02" && day == "29") {
 			if ((atoi(year.c_str()) % 4 == 0) && (atoi(year.c_str()) % 100 != 0 || atoi(year.c_str()) % 400 == 0))
@@ -190,7 +194,7 @@ std::map<size_t, value>parse_input(std::string name) {
 
 	std::string tmpLine;
 	std::string tmpDate;
-	float tmpValue = 0; 
+	float tmpValue = 0;
 
 	std::getline(file, tmpLine);
 	if (tmpLine != "date | value") {
@@ -217,15 +221,12 @@ std::map<size_t, value>parse_input(std::string name) {
 }
 
 void print_result(std::map<size_t, value> input, std::map<std::string, float> db) {
-	std::map<size_t, value>::iterator it_input = input.begin();
 	std::map<std::string, float>::iterator it_db = db.begin();
 
-	while (it_input != input.end()) {
+	for (std::map<size_t, value>::iterator it_input = input.begin(); it_input != input.end(); it_input++) {
 		if (it_input->second.reason == NO_ERROR) {
-			while (it_db != db.end() && it_input->second.date > it_db->first)
+			while (it_db != db.end() && it_input->second.date > it_db->first) {
 				it_db++;
-			if (it_db == db.begin()) {
-				it_db--;
 			}
 			if (it_db == db.end()) {
 				std::cerr << CLR_MAGENTA << it_input->second.date << CLR_RED << " => no data found" << CLR_RESET << std::endl;
@@ -257,7 +258,6 @@ void print_result(std::map<size_t, value> input, std::map<std::string, float> db
 					break;
 			}
 		}
-		it_input++;
 	}
 }
 
