@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/05/02 15:21:09 by rparodi          ###   ########.fr        #
+#    Updated: 2025/06/05 18:48:32 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,17 @@ get_db:
 	@cp ./cpp_09/data.csv . &> /dev/null
 	@rm -rf ./cpp_09.tgz ./cpp_09 &> /dev/null
 	@printf '$(GREY)Downloaded $(END)$(GREEN)data.csv$(END)\n'
+	@echo "date | value" > ./input.txt
+	@echo "2011-01-03 | 3" >> ./input.txt
+	@echo "2011-01-03 | 2" >> ./input.txt
+	@echo "2011-01-03 | 1" >> ./input.txt
+	@echo "2011-01-03 | 1.2" >> ./input.txt
+	@echo "2011-01-09 | 1" >> ./input.txt
+	@echo "2012-01-11 | -1" >> ./input.txt
+	@echo "2001-42-42" >> ./input.txt
+	@echo "2012-01-11 | 1" >> ./input.txt
+	@echo "2012-01-11 | 2147483648" >> ./input.txt
+	@printf '$(GREY)Writing the example $(END)$(GREEN)input.txt$(END)\n'
 
 # Clean (make clean)
 clean:
