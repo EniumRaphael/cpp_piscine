@@ -6,7 +6,7 @@
 #    By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 11:05:05 by rparodi           #+#    #+#              #
-#    Updated: 2025/06/05 19:09:44 by rparodi          ###   ########.fr        #
+#    Updated: 2025/06/07 16:45:53 by rparodi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,11 +53,11 @@ END = \033[0m
 all: header $(NAME) footer
 
 get_db:
-	@rm -rf ./cpp_09.tgz ./cpp_09 ./data.csv &> /dev/null
-	@wget https://cdn.intra.42.fr/document/document/33121/cpp_09.tgz &> /dev/null
-	@tar -xvf cpp_09.tgz &> /dev/null
-	@cp ./cpp_09/data.csv . &> /dev/null
-	@rm -rf ./cpp_09.tgz ./cpp_09 &> /dev/null
+	@rm -rf ./cpp_09.tgz ./cpp_09 ./data.csv > /dev/null
+	@wget https://cdn.intra.42.fr/document/document/33121/cpp_09.tgz > /dev/null
+	@tar -xvf cpp_09.tgz > /dev/null
+	@cp ./cpp_09/data.csv . > /dev/null
+	@rm -rf ./cpp_09.tgz ./cpp_09 > /dev/null
 	@printf '$(GREY)Downloaded $(END)$(GREEN)data.csv$(END)\n'
 	@echo "date | value" > ./input.txt
 	@echo "2011-01-03 | 3" >> ./input.txt
