@@ -6,7 +6,7 @@
 /*   By: rparodi <rparodi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:15:32 by rparodi           #+#    #+#             */
-/*   Updated: 2025/06/05 19:30:36 by rparodi          ###   ########.fr       */
+/*   Updated: 2025/06/08 15:59:57 by rparodi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ std::string check_date(std::string name, enum error_code *error_code) {
 	}
 	if (day > "28") {
 		if (month == "02" && day == "29") {
-			if ((atoi(year.c_str()) % 4 == 0) && (atoi(year.c_str()) % 100 != 0 || atoi(year.c_str()) % 400 == 0))
+			if (!((atoi(year.c_str()) % 4 == 0) && (atoi(year.c_str()) % 100 != 0 || atoi(year.c_str()) % 400 == 0)))
 				*error_code = NO_DATE;
 		}
 		else {
